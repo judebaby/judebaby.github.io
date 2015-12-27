@@ -1,0 +1,29 @@
+{
+    "authors" : [
+		{
+			"id"   : 0,
+			"name" : "Rohith Soman",
+			"pic"  : "rohith.png"
+		},
+		{
+			"id"   : 1,
+			"name" : "Aswathi M N",
+			"pic"  : "aswathimn.png"
+		},
+		{
+			"id"   : 2,
+			"name" : "Midhun Ben Thomas",
+			"pic"  : "ben.png"
+		},
+		{
+			"id"   : 3,
+			"name" : "Neethu Varghese",
+			"pic"  : "neethu.png"
+		},
+		{
+			"id"   : 1111,
+			"name" : "dummy",
+			"pic"  : "dummy.png"
+		}
+	]
+}

@@ -1,0 +1,24 @@
+{
+    "articles" : [
+		{
+			"article_type" : "Sports",
+			"article_list" : ["SPL","SCL","SBL"]
+		},
+		{
+			"article_type" : "Cultural",
+			"article_list" : ["Mudra"]
+		},
+		{
+			"article_type" : "Celebrations",
+			"article_list" : ["Onam","Iftaar","Christmas"]
+		},
+		{
+			"article_type" : "Get Togethers",
+			"article_list" : ["Freshers","Farewell","Tour"]
+		},
+		{
+			"article_type" : "Initiatives",
+			"article_list" : ["44/7","Charity"]
+		}
+	]
+}
