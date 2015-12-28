@@ -256,8 +256,12 @@ position:absolute;width:100px;height:112px;overflow: hidden; background: #333 ; 
 
 }
 
+.SIMAGallery2:hover{
+cursor:pointer;
+}
+
 #article_text_text{
-font-family:TitleFont;font-size:large;line-height:30px;color:rgb(0,0,0);
+font-family:TitleFont;font-size:medium;line-height:30px;color:rgb(0,0,0);
 }
 #article_text {
 padding-left:20px;padding-top:10px;width:700px;
@@ -298,7 +302,7 @@ cursor:pointer;
 }
 
 #article_abstract_text {
-padding-left:10px;padding-right:10px;font-family:TitleFont;font-size:large;line-height:25px;color:rgb(0,0,0);
+padding-left:10px;padding-right:10px;font-family:TitleFont;font-size:large;line-height:25px;color:rgb(0,0,0);    text-align: justify;
 }
 .article_abstract_title  {height:40px;padding-left:10px;padding-right:10px;font-family:TitleFont;font-size:xx-large;line-height:40px;font-weight:bold;color:rgb(0,0,0);}
 .article_section_title  {height:40px;padding-left:20px;padding-right:10px;font-family:TitleFont;font-size:xx-large;line-height:40px;font-weight:bold;color:rgb(0,0,0);}

@@ -46,7 +46,7 @@
 			
 			<div id="spacer" style="height:15px"></div>			
 			
-			<div id="variable_height" style="position:absolute;margin-top:40px" >
+			<div id="variable_height" style="position:absolute;margin-top:40px;" >
 					
 			<div id="spacer" style="height:20px"></div>
 			 
@@ -112,7 +112,10 @@
 var articles=[];
 LoadArticleList();
 
-
+</script> 
+<script type="text/javascript">
+  $(document).ready(function() {
+		$('#variable_height').css('width',$( document ).width()-10) ;
 </script> 
 
 </body></html>
