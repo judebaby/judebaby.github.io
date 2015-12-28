@@ -330,3 +330,97 @@ function slide(where){
 					
  return false;
 }
+
+function TabClicked(id){
+	var p = 220*articles[id].start + 10;
+	$('#variable_height').stop().animate({scrollTop:p}, '500', 'swing', function() { 							
+	});
+			
+}
+function ArticleClicked(id){
+	console.log(id);
+	window.location.href = "./main_article.html";
+}
+function LoadArticleList(){
+	jQuery.getJSON('../../home/main/articles/article_list.json',function(data){
+		
+		articles = data.articles;
+		//Create Section Tabs	
+		var t = $('#section_tabs');
+		t.empty();
+		for ( var i = articles.length-1 ; i >=0  ; i--){
+			t.append('<div id="section_tab" onclick="TabClicked({1})"> {0} </div>'.format([articles[i].article_type,i.toString()]));
+		}
+		
+		
+		//Create Sections		
+		t = $('#variable_height');
+		
+		
+		
+		t.empty();
+		t.append('<div id="spacer" style="height:20px"></div>');
+		
+		var k = 0;
+		for ( var i = 0 ; i < articles.length ; i++){
+			//t.append('<div class="article_section_title">{0}</div>'.format([data.articles[i].article_type]));
+			var article_list = articles[i].article_list;
+			articles[i].start = k;
+			for ( var j=0;j < article_list.length;j++){
+				//t.append('<div class="article_abstract_title"> {0} </div>'.format([article_list[j].article_title]))
+				
+				var s = '';	
+				
+				if( k%2==0){
+					s = s + '<div id="article_abs_{0}" class="article_abstract_1" onclick="ArticleClicked({0})">'.format([k.toString()]) ;
+					s = s + '	<div style="float:left ;">' ;
+					s = s + '		<div id="article_abstract_image" style="background: url(../../static/pics/main/events/{0}) no-repeat;background-size:cover;">'.format([article_list[j].article_image]) ;
+					s = s + '		</div>' ;
+					s = s + '	</div>' ;
+					s = s + '	<div style="float:left ; width:460px ; padding-left:10px">' ;
+					s = s + '		<div >' ;					
+					s = s + '			<div class="article_abstract_title">' ;
+					s = s + '				{0}'.format([article_list[j].article_title]) ;
+					s = s + '			</div>' ;
+					s = s + '		</div>' ;					
+					s = s + '		<div id="spacer" style="height:10px"></div>' ;
+					s = s + '		<div>' ;					
+					s = s + '			<div id="article_abstract_text">' ;
+					s = s + '				{0}'.format([article_list[j].article_abstract]) ;
+					s = s + '			</div>' ;
+					s = s + '		</div>' ;				
+					s = s + '	</div>	' ;
+					s = s + '</div>' ;
+			    }else{
+					s = s + '<div id="article_abs_{0}" class="article_abstract_2" onclick="ArticleClicked({0})">'.format([k.toString()]) ;
+
+					s = s + '	<div style="float:left ; width:460px ; padding-left:10px">' ;
+					s = s + '		<div >' ;					
+					s = s + '			<div class="article_abstract_title" style="text-align:right">' ;
+					s = s + '				{0}'.format([article_list[j].article_title]) ;
+					s = s + '			</div>' ;
+					s = s + '		</div>' ;					
+					s = s + '		<div id="spacer" style="height:10px"></div>' ;
+					s = s + '		<div>' ;					
+					s = s + '			<div id="article_abstract_text" style="text-align:right;">' ;
+					s = s + '				{0}'.format([article_list[j].article_abstract]) ;
+					s = s + '			</div>' ;
+					s = s + '		</div>' ;				
+					s = s + '	</div>	' ;
+
+					s = s + '	<div style="float:left ;">' ;
+					s = s + '		<div id="article_abstract_image" style="background: url(../../static/pics/main/events/{0}) no-repeat;background-size:cover;">'.format([article_list[j].article_image]) ;
+					s = s + '		</div>' ;
+					s = s + '	</div>' ;
+					
+					s = s + '</div>' ;
+				}
+				k = k + 1;
+				t.append(s);
+			}
+		}
+		
+		t.append('<div id="spacer" style="height:220px"></div>');
+		
+	});	
+}

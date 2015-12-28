@@ -1,0 +1,51 @@
+{
+    "background_images" : [
+		{
+			"image"   : "bg1.jpg",
+			"gallery" : "cultural"
+		},
+		{
+			"image"   : "bg2.jpg",
+			"gallery" : "sports"
+		},
+		{
+			"image"   : "bg3.jpg",
+			"gallery" : "event"
+		},
+		{
+			"image"   : "bg4.jpg",
+			"gallery" : "cultural"
+		},
+		{
+			"image"   : "bg5.jpg",
+			"gallery" : "sports"
+		},
+		{
+			"image"   : "bg6.jpg",
+			"gallery" : "event"
+		},
+		{
+			"image"   : "bg7.jpg",
+			"gallery" : "charity"
+		},
+		{
+			"image"   : "bg8.jpg",
+			"gallery" : "cultural"
+		},
+		{
+			"image"   : "bg9.jpg",
+			"gallery" : "sports"
+		},
+		{
+			"image"   : "bg10.jpg",
+			"gallery" : "event"
+		},
+		{
+			"image"   : "bg11.jpg",
+			"gallery" : "charity"
+		},{
+			"image"   : "bg12.jpg",
+			"gallery" : "cultural"
+		}		
+	]
+}

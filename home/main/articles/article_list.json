@@ -1,24 +1,89 @@
 {
-    "articles" : [
-		{
-			"article_type" : "Sports",
-			"article_list" : ["SPL","SCL","SBL"]
+    "articles" : [		
+		{		
+			"article_type" : "CULTURAL",
+			"article_list" : [
+								{
+									"article_title" : "Mudra",
+									"article_image" : "cultural.jpg",
+									"article_abstract" : "Dance is a performance art form consisting of purposefully selected sequences of human movement. This movement has aesthetic and symbolic value, and is acknowledged as dance by performers and observers within a particular culture."
+								}																
+							 ]
 		},
-		{
-			"article_type" : "Cultural",
-			"article_list" : ["Mudra"]
+		{		
+			"article_type" : "SPORTS",
+			"article_list" : [
+								{
+									"article_title" : "SCL",
+									"article_image" : "cricket.jpg",
+									"article_abstract" : "Cricket is a bat-and-ball game played between two teams of 11 players each on a field at the centre of which is a rectangular 22-yard-long pitch. The game is played by 120 million players in many countries, making it the world's second most popular sport."
+								},
+								{
+									"article_title" : "SPL",
+									"article_image" : "football.jpg",
+									"article_abstract" : "Football refers to a number of team sports that involve, to varying degrees, kicking a ball to score a goal. Unqualified, the word football is understood to refer to whichever form of football is the most popular in the regional context in which the word appears."
+								},	
+								{
+									"article_title" : "SBL",
+									"article_image" : "freshers.jpg",
+									"article_abstract" : "Badminton is a recreational sport played using rackets to hit a shuttlecock across a net. Although it may be played with larger teams, the most common forms of the game are singles  and doubles"
+								}								
+							 ]
 		},
-		{
-			"article_type" : "Celebrations",
-			"article_list" : ["Onam","Iftaar","Christmas"]
+		{		
+			"article_type" : "CELEBRATIONS",
+			"article_list" : [
+								{
+									"article_title" : "Onam",
+									"article_image" : "onam.jpg",
+									"article_abstract" : "Onam is the national festival celebrated in Kerala, India. It is also the state festival of Kerala with State holidays on 4 days starting from Onam Eve (Uthradom) to the 3rd Onam Day."
+								},
+								{
+									"article_title" : "Iftaar",
+									"article_image" : "ifftaar.jpg",
+									"article_abstract" : "Iftar is one of the religious observances of Ramadan and is often done as a community, with people gathering to break their fast together. Iftar is taken right after Maghrib time, which is around sunset." 
+								},	
+								{
+									"article_title" : "Christmas",
+									"article_image" : "christmas.jpg",
+									"article_abstract" : "Christmas or Christmas Day is an annual festival commemorating the birth of Jesus Christ,observed most commonly on December 25 as a religious and cultural celebration among billions of people around the world."
+								}								
+							 ]
 		},
-		{
-			"article_type" : "Get Togethers",
-			"article_list" : ["Freshers","Farewell","Tour"]
+		{		
+			"article_type" : "GATHERINGS",
+			"article_list" : [
+								{
+									"article_title" : "Freshers",
+									"article_image" : "freshers.jpg",
+									"article_abstract" : "Although usually described as a week, the length of this period varies widely from university to university and country to country, ranging from about three days to a month or even more. "
+								},
+								{
+									"article_title" : "Farewell",
+									"article_image" : "farewell.jpg",
+									"article_abstract" : "A Farewell speech or farewell address is a speech given by an individual leaving a position or place. They are often used by public figures such as politicians as a to the preceding career, or as statements delivered by persons relating to reasons for their leaving." 
+								},	
+								{
+									"article_title" : "Tour",
+									"article_image" : "tour.jpg",
+									"article_abstract" : "Tourism is travel for pleasure; also the theory and practice of touring, the business of attracting, accommodating, and entertaining tourists, and the business of operating tours.Tourism may be international, or within the traveler's country."
+								}								
+							 ]
 		},
-		{
-			"article_type" : "Initiatives",
-			"article_list" : ["44/7","Charity"]
+		{		
+			"article_type" : "INITIATIVES",
+			"article_list" : [
+								{
+									"article_title" : "44/7",
+									"article_image" : "447.jpg",
+									"article_abstract" : "A convention, in the sense of a meeting, is a gathering of individuals who meet at an arranged place and time in order to discuss or engage in some common interest. The most common conventions are based upon industry, profession, and fandom."
+								},	
+								{
+									"article_title" : "Charity",
+									"article_image" : "charity.jpg",
+									"article_abstract" : "The practice of charity means the voluntary giving of help to those in need, as a humanitarian act. Originally in Latin the word caritas meant preciousness, dearness, high price."
+								}								
+							 ]
 		}
 	]
 }
