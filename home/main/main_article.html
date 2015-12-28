@@ -8,6 +8,16 @@
 </head>
 <body>
 
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=1414176488821691";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
 <div id="container">
 	
   <div style="min-height:900px;background:rgb(255,246,89);background-image: url('../../static/pics/main/bg.jpg')">	  
@@ -87,6 +97,10 @@
 			
 			<div id="spacer" style="height:20px"></div>	
 			
+			<div id="fbcommentplugin">
+			  <div class="fb-comments" data-href="http://simaiisc.org/home/main/main_article.html" data-width="650" data-numposts="5"></div>
+			</div>
+			
 			</div>
 		</div>
   </div>
@@ -113,7 +127,7 @@ $( function(){
 	//SetNextRecentEvent(1);
 
 	SIMASliderInit();	
-	LoadArticle("SPL");
+
 });
 
 
@@ -121,7 +135,9 @@ $( function(){
 <script>
 
   $(document).ready(function() {
-
+		console.log('Load Article : ' + window.sessionStorage.getItem("ArticleToLoad"));
+	    LoadArticle(window.sessionStorage.getItem("ArticleToLoad"));
+	
         //options( 1 - ON , 0 - OFF)
         var auto_slide = 1;
             var hover_pause = 0;
