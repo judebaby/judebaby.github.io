@@ -18,7 +18,7 @@
 		
 			<div id="top_bar" style="position:relative;height:120px;">
 				<ul style="padding-top:10px">
-					<li style="float:left;margin-left:20px;width:100px" ><div id="SIMALogo"></div></li>
+					<li style="float:left;margin-left:20px;width:100px" ><div id="SIMALogo" onclick="location.href='../../home/main/main.html'"></div></li>
 					<li style="float:left;margin-left:20px;line-height:100px;height:100px"> <font face="HeaderFont" size="4"> <font size="12"><b>S</b></font>CIENCE <font size="12"><b>I</b></font>NSTITUTE <font size="12"><b>M</b></font>ALAYALEE <font size="12"><b>A</b></font>SSOCIATION </font></li>
 				</ul>
 			</div>
@@ -107,52 +107,11 @@
 </div>
 
 <script type="text/javascript">
-var nBackGrounds = 12;
 
-var RecentEvents = $('div[id^="recent-"]').hide();
-console.log(RecentEvents)
-var CurrentRecentEvent = -1;
-
-var carousel =[];
-var SIMASlider = [];
-
-var articles = [];
-
-$( function(){	
-
-	//LoadRecentEvents();
-	//LoopBackGroundImage();	
-	//SetNextRecentEvent(1);
-	SIMASliderInit();	
-});
+var articles=[];
+LoadArticleList();
 
 
 </script> 
-<script>
-	var isScrolling=false;
-	$('#variable_height').scroll(function() {
-		if(isScrolling==false){
-		var height = $(this).scrollTop();
-/*
-		if(height  > 300) {
-			isScrolling=true;
-			$(this).stop().animate({scrollTop:0}, '500', 'swing', function() { 	
-				isScrolling=false;			
-			});
-		}
-*/
-		}
-		
-	});
 
-  $(document).ready(function() {
-  
-		LoadArticleList();
-		
-       
-
-  });
-
-
-</script>
 </body></html>

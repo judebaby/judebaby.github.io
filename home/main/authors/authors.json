@@ -3,27 +3,32 @@
 		{
 			"id"   : 0,
 			"name" : "Rohith Soman",
-			"pic"  : "rohith.png"
+			"pic"  : "rohith.jpg",
+			"about": "<b>Rohith Soman</b> is a PhD Student at CeNSE, IISc Bangalore. Mononymously known as Somettan, he is also the current secretary of SIMA. He is pursuing research in the field on GaN transistors."
 		},
 		{
 			"id"   : 1,
 			"name" : "Aswathi M N",
-			"pic"  : "aswathimn.png"
+			"pic"  : "aswathimn.png",
+			"about": ""
 		},
 		{
 			"id"   : 2,
 			"name" : "Midhun Ben Thomas",
-			"pic"  : "ben.png"
+			"pic"  : "ben.jpg",
+			"about": "He is currently a Post-Doc in Israel."
 		},
 		{
 			"id"   : 3,
 			"name" : "Neethu Varghese",
-			"pic"  : "neethu.png"
+			"pic"  : "neethu.png",
+			"about": ""
 		},
 		{
 			"id"   : 1111,
 			"name" : "dummy",
-			"pic"  : "dummy.png"
+			"pic"  : "dummy.png",
+			"about": ""
 		}
 	]
 }

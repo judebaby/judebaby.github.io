@@ -424,3 +424,23 @@ function LoadArticleList(){
 		
 	});	
 }
+
+function LoadArticle(name){
+	//Load Article
+	jQuery.getJSON('../../home/main/articles/' + name +'.json',function(data){
+		article = data.article;
+		//Get authors
+		jQuery.getJSON('../../home/main/authors/authors.json',function(data){
+			authors = data.authors;
+			
+			$('#article_title').empty().append(article.article_title);
+			$('#article_text_text').empty().append(article.article);
+			for(i=0;i<authors.length;i++){
+				if(authors[i].name==article.article_author){
+					$('#article_author_text').empty().append(authors[i].about);
+					$('#author_image').css('background-image', "url(" + '../../home/main/authors/'+ authors[i].pic + ")");
+				}
+			}
+		});
+	});
+}
