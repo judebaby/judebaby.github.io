@@ -85,8 +85,8 @@ function SIMASliderInit(){
 			
 	//Fill up till ava
 	var z = galleries.length > 3 ? 3 : galleries.length ;
-	for(var i = z , j = galleries.length - 1 ; i > 0 ; i--,j--){
-		SIMASlider.el_sel[i-1].append(galleries[j].tag);
+	for(var i = 0 , j = galleries.length - 1 ; i < z ; i++,j--){
+		SIMASlider.el_sel[2-i].append(galleries[j].tag);
 	}
 	
 	$("#SIMAGallery").mousemove(function(e){  
