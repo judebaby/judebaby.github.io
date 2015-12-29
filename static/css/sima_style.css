@@ -322,3 +322,49 @@ background: rgba(220,200,200,0.5);
 cursor:pointer;
 }
 #article_abstract_image  {width:200px;height:200px;}
+
+#fbcommentplugin{
+  width:720px;
+  background:rgba(255,255,255,1);
+}
+
+.MemberTable{
+	font-family:TitleFont;font-size:large;
+	padding:20px 20px;
+	
+	background:rgba(255,255,255,0.3);
+	width:740px;
+}
+.MemberTable table{
+	padding-left:20px;
+}
+.MemberTable tr  {
+  height : 30px;
+  margin-bottom:10px;
+  font-size:large;
+  margin-top:10px;
+}
+.MemberTable td  {
+  padding:2px 0px 2px 0px;
+}
+
+.tIndex{
+	width:60px;
+}
+.tName{
+	width:200px;
+}
+.tCourse{
+	width:200px;	
+}
+.tPlace{
+	width:260px;	
+}
+.tev{
+line-height:30px;
+background:rgba(255,230,60,1);
+}
+.tod{
+line-height:30px;
+background:rgba(255,230,60,0.6);
+}

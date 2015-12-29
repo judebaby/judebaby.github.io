@@ -97,6 +97,7 @@
 			
 			<div id="spacer" style="height:20px"></div>	
 			
+			
 			<div id="fbcommentplugin">
 			  <div class="fb-comments" data-href="http://simaiisc.org/home/main/main_article.html" data-width="650" data-numposts="5" data-colorscheme="dark"></div>
 			</div>
@@ -152,7 +153,7 @@ $("#variable_height").scroll(function() {
 		
 		console.log('Load Article : ' + window.sessionStorage.getItem("ArticleToLoad"));
 		var article = window.sessionStorage.getItem("ArticleToLoad");
-		article = typeof(myVariable) == "undefined" ? "SCL" : article;
+		article = typeof(article) == "undefined" ? "SCL" : article;
 		LoadArticle(article);
 		
 		$('#variable_height').css('width',$( document ).width()-10) ;
