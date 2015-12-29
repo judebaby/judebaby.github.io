@@ -13,7 +13,7 @@
 	
   <div style="min-height:1024px;background:rgb(255,246,89);background-image: url('../../static/pics/main/bg.jpg')">	  
   
-		<div id="spacer" style="height:120px;background:rgba(127,127,127,0.5)"></div>
+		<div id="spacer_top" style="height:120px;background:rgba(127,127,127,0.5)"></div>
 		
 		<div id="content" style="position:absolute" >		
 		
@@ -30,8 +30,11 @@
 			<div id="section_header" style="padding-left:20px ;">	
 				
 				<div style="padding-left:5px ;height:60px">
-					<div id="section_title" >Activities</div>
-					<div id="section_title_bx" style="height:3px;background:rgb(0,0,0)"></div>
+				    <div id="section_header_top">
+						<div id="section_title" >Activities</div>
+						<div id="section_title_bx" style="height:3px;background:rgb(0,0,0)"></div>
+					</div>
+					
 					<div id="section_tabs">
 						<div id="section_tab" style=""> CULTURAL </div>	
 						<div id="section_tab" style=""> SPORTS </div>
@@ -111,11 +114,35 @@
 
 var articles=[];
 LoadArticleList();
-
+var lastScroll=0;
+var isSliding=false;
+$("#variable_height").scroll(function() {
+	var x = $(this).scrollTop();
+	if((x - lastScroll) > 50){
+		if(isSliding==false){
+			isSliding=true;
+			$('#top_bar').stop().slideUp("slow");
+			$('#spacer_top').stop().slideUp("slow",function(){
+				//$('#section_header_top').stop().slideUp("slow");
+				$('#section_title').stop().slideUp("slow",function(){isSliding=false;});				
+			});
+		}
+	}else{
+		if(isSliding==false){
+			isSliding=true;
+			$('#top_bar').stop().slideDown("slow");
+			$('#spacer_top').stop().slideDown("slow");
+		//$('#section_header_top').stop().slideUp("slow");
+			$('#section_title').stop().slideDown("slow",function(){isSliding=false;});
+		}	
+	}
+    lastScroll = x;
+});
 </script> 
 <script type="text/javascript">
   $(document).ready(function() {
 		$('#variable_height').css('width',$( document ).width()-10) ;
+  });
 </script> 
 
 </body></html>

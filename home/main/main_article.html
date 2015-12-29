@@ -22,7 +22,7 @@
 	
   <div style="min-height:1024px;background:rgb(255,246,89);background-image: url('../../static/pics/main/bg.jpg')">	  
   
-		<div id="spacer" style="height:120px;background:rgba(127,127,127,0.5)"></div>
+		<div id="spacer_top" style="height:120px;background:rgba(127,127,127,0.5)"></div>
 		
 		<div id="content">		
 		
@@ -108,18 +108,41 @@
 </div>
 
 <script type="text/javascript">
-var nBackGrounds = 12;
 
-var RecentEvents = $('div[id^="recent-"]').hide();
-console.log(RecentEvents)
-var CurrentRecentEvent = -1;
 
-var carousel =[];
+
 var SIMASlider = [];
 
 var	article=[];
 var	authors=[];
 var galleries=[];
+
+var lastScroll=0;
+
+var isSliding=false;
+$("#variable_height").scroll(function() {
+	var x = $(this).scrollTop();
+	if((x - lastScroll) > 50){
+		if(isSliding==false){
+			isSliding=true;
+			$('#top_bar').stop().slideUp("slow");
+			$('#spacer_top').stop().slideUp("slow",function(){
+				//$('#section_header_top').stop().slideUp("slow");
+				$('#article_title').stop().slideUp("slow",function(){isSliding=false;});				
+			});
+		}
+	}else{
+		if(isSliding==false){
+			isSliding=true;
+			$('#top_bar').stop().slideDown("slow");
+			$('#spacer_top').stop().slideDown("slow");
+		//$('#section_header_top').stop().slideUp("slow");
+			$('#article_title').stop().slideDown("slow",function(){isSliding=false;});
+		}	
+	}
+    lastScroll = x;
+});
+
 
 </script> 
 
@@ -128,8 +151,13 @@ var galleries=[];
   $(document).ready(function() {
 		
 		console.log('Load Article : ' + window.sessionStorage.getItem("ArticleToLoad"));
-	    LoadArticle(window.sessionStorage.getItem("ArticleToLoad"));
+		var article = window.sessionStorage.getItem("ArticleToLoad");
+		article = typeof(myVariable) == "undefined" ? "SCL" : article;
+		LoadArticle(article);
+		
 		$('#variable_height').css('width',$( document ).width()-10) ;
+		
+		
         //options( 1 - ON , 0 - OFF)
         var auto_slide = 1;
             var hover_pause = 0;
@@ -190,51 +218,6 @@ var galleries=[];
 
 
 </script>
-<script>
-// Copyright 2006-2007 javascript-array.com
 
-var timeout	= 500;
-var closetimer	= 0;
-var ddmenuitem	= 0;
-
-// open hidden layer
-function mopen(id)
-{	
-	// cancel close timer
-	mcancelclosetime();
-
-	// close old layer
-	if(ddmenuitem) ddmenuitem.style.visibility = 'hidden';
-
-	// get new layer and show it
-	ddmenuitem = document.getElementById(id);
-	ddmenuitem.style.visibility = 'visible';
-
-}
-// close showed layer
-function mclose()
-{
-	if(ddmenuitem) ddmenuitem.style.visibility = 'hidden';
-}
-
-// go close timer
-function mclosetime()
-{
-	closetimer = window.setTimeout(mclose, timeout);
-}
-
-// cancel close timer
-function mcancelclosetime()
-{
-	if(closetimer)
-	{
-		window.clearTimeout(closetimer);
-		closetimer = null;
-	}
-}
-
-// close layer when click-out
-document.onclick = mclose; 
-</script>
 
 </body></html>
