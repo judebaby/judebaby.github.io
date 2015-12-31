@@ -202,22 +202,27 @@ function TabClicked(id){
 	$('#variable_height').stop().animate({scrollTop:p}, '500', 'swing', function() { 							
 	});
 }
+
+var article_type = 'articles';
 function ArticleClicked(id){
 	console.log(id);
-	window.sessionStorage.setItem("ArticleToLoad","SCL");
+	window.sessionStorage.setItem("ArticleToLoad","articles/SCL");
 	for(var i= 0 , k = 0; i < articles.length ; i++){
 		for(var j = 0 ; j < articles[i].article_list.length;j++){
 			if(k == id){				
-				window.sessionStorage.setItem("ArticleToLoad",articles[i].article_list[j].article_title);
+				window.sessionStorage.setItem("ArticleToLoad",article_type + '/'+articles[i].article_list[j].article_title);
 			}
 			k++;
 		}
 	}
 	window.location.href = "./main_article.html";
 }
-function LoadArticleList(){
-	
-	jQuery.getJSON('../../home/main/articles/article_list.json',function(data){
+
+
+
+function LoadArticleList(type){
+	article_type=type;
+	jQuery.getJSON('../../home/main/'+ article_type +'/article_list.json',function(data){
 		
 		articles = data.articles;
 		//Create Section Tabs	
@@ -250,8 +255,60 @@ function LoadArticleList(){
 				}
 				
 				el.find('.article_abstract_title').empty().append(article_list[j].article_title);
-				el.find('#article_abstract_image').css('background-image', 'url(../../static/pics/main/events/{0})'.format([article_list[j].article_image]));
+				el.find('#article_abstract_image').css('background-image', 'url(../../home/main/'+ article_type + '/{0})'.format([article_list[j].article_image]));
 				el.find('#article_abstract_text').empty().append(article_list[j].article_abstract);
+				el.attr("id","article_abs_"+k.toString());
+				el.attr("onclick","ArticleClicked({0})".format([k.toString()]));
+				el.appendTo(t);
+				
+				k = k + 1;
+			}
+		}
+		
+		t.append('<div id="spacer" style="height:220px"></div>');
+		$('#variable_height').css('width',$( document ).width()-10) ;
+		$('#variable_height').css('height',$( document ).height()-200) ;
+	});	
+	
+	if(chkMobile()==true) alert('Mobile');
+}
+function LoadDiscussionsList(type){
+	article_type=type;
+	jQuery.getJSON('../../home/main/'+ article_type +'/article_list.json',function(data){
+		
+		articles = data.articles;
+		//Create Section Tabs	
+		var t = $('#section_tabs');
+		t.empty();
+		for ( var i = articles.length-1 ; i >=0  ; i--){
+			t.append('<div id="section_tab" onclick="TabClicked({1})"> {0} </div>'.format([articles[i].article_type,i.toString()]));
+		}
+		
+		var a1 = $('.article_abstract_1').clone();
+		var a2 = $('.article_abstract_2').clone();
+		//Create Sections		
+		t = $('#variable_height');
+		
+		t.empty();
+		t.append('<div id="spacer" style="height:20px"></div>');
+		
+		var k = 0;
+		for ( var i = 0 ; i < articles.length ; i++){
+		
+			var article_list = articles[i].article_list;
+			articles[i].start = k;
+			for ( var j=0;j < article_list.length;j++){
+			
+				var el ;
+				if( k%2==0){
+					el =  a1.clone();
+				}else{
+					el =  a2.clone();
+				}
+				
+				el.find('.discuss_abstract_title').empty().append(article_list[j].article_title);
+				el.find('#article_abstract_image').css('background-image', 'url(../../home/main/'+ article_type + '/{0})'.format([article_list[j].article_image]));
+				el.find('#discuss_abstract_text').empty().append(article_list[j].article_abstract);
 				el.attr("id","article_abs_"+k.toString());
 				el.attr("onclick","ArticleClicked({0})".format([k.toString()]));
 				el.appendTo(t);
@@ -271,7 +328,8 @@ function LoadArticleList(){
 function LoadArticle(name){
 	//Load Article
 	console.log(name)
-	jQuery.getJSON('../../home/main/articles/' + name +'.json',function(data){
+	
+	jQuery.getJSON('../../home/main/' + name +'.json',function(data){
 		article = data.article;		
 		//Get authors
 		jQuery.getJSON('../../home/main/authors/authors.json',function(data){

@@ -1,0 +1,36 @@
+{
+    "articles" : [		
+		{		
+			"article_type" : "RESEARCH HIGHLIGHTS",
+			"article_list" : [
+								{
+									"article_title" : "Nano-Capsules for Drug Delivery",
+									"article_image" : "discuss.jpg",
+									"article_abstract" : "Stimuli responsive protamine based nanocapsules for enhanced biodegradable for enhanced bioavailability and intracellular delivery of anti-cancer drugs"
+								},
+								{
+									"article_title" : "Friction Stir Processing for better materials",
+									"article_image" : "discuss.jpg",
+									"article_abstract" : "Development of microstructure, texture and residual stresses during friction stir processing of aluminium alloys"
+								},
+								{
+									"article_title" : "Role of RAG's in battle for survival",
+									"article_image" : "discuss.jpg",
+									"article_abstract" : "How Recombination Activating Genes help in structure-specific nuclease action and Why new HIV drugs may lead to cancer"
+								}
+							 ]
+		},
+		{		
+			"article_type" : "OPEN PAGES",
+			"article_list" : [								
+							 ]
+		},
+		{		
+			"article_type" : "INTERVIEWS",
+			"article_list" : [							
+							 ]
+		}
+	]
+}
+
+

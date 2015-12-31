@@ -20,9 +20,21 @@
 		},
 		{
 			"id"   : 3,
-			"name" : "Neethu Varghese",
-			"pic"  : "neethu.png",
-			"about": ""
+			"name" : "Neethu",
+			"pic"  : "unf.jpg",
+			"about": "Student at IISc"
+		},
+		{
+			"id"   : 4,
+			"name" : "Naresh Narayanan",
+			"pic"  : "unm.jpg",
+			"about": "Post Doc in Spain"
+		},
+		{
+			"id"   : 5,
+			"name" : "Nishana",
+			"pic"  : "unf.jpg",
+			"about": "Post Doc  "
 		},
 		{
 			"id"   : 1111,
