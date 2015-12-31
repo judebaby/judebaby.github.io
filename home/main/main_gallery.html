@@ -156,10 +156,10 @@ $( function(){
 		});
 		
 		$(".SMGImage").mouseenter( function(){	
-			$(this).stop().animate({'background-position-x': '10%'}, 500 )
+		    MainGallery_hoverslide($(this),-1);
 		});
 		$(".SMGImage").mouseout( function(){	
-			$(this).stop().animate({'background-position-x': '0%'}, 500 )
+			MainGallery_hoverslide($(this),1);
 		});
 		
         //options( 1 - ON , 0 - OFF)

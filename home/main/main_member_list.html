@@ -49,26 +49,33 @@
 			
 			<div id="spacer" style="height:15px"></div>			
 			
+			<div style="width:720px;display:inline-table;margin-top:20px;color:rgb(0,0,0)">
+			  <div style="line-height:40px;float:right;padding-left:10px;padding-right:10px;height:42px;cursor:pointer;;text-align:center;background-color:rgba(0,0,0,0.2);font-family:TitleFont;font-size:large;" onclick='MemberSearch(2)'>LOCATION</div>
+			  <div style="line-height:40px;float:right;padding-left:10px;padding-right:10px;height:42px;cursor:pointer;;text-align:center;background-color:rgba(0,0,0,0.2);font-family:TitleFont;font-size:large;" onclick='MemberSearch(1)'>COURSE</div>
+			  <div style="line-height:40px;float:right;padding-left:10px;padding-right:10px;height:42px;cursor:pointer;;text-align:center;background-color:rgba(0,0,0,0.2);font-family:TitleFont;font-size:large;" onclick='MemberSearch(0)'>NAME</div>
+			  <div id="Company" style="line-height:40px;float:right;width:200px;height:40px;border:thin solid #000000;text-align:center;font-family:TitleFont;font-size:large;" contenteditable>search-term</div>			  			  
+			</div>
+			
 			<div id="variable_height" style="position:absolute;margin-top:40px;" >
 					
 			<div id="spacer" style="height:20px"></div>
 			 
 			<div class="MemberTable" style="">
-			<table >
-			  <tr style="margin-bottom:60px">
+			<table id="memt" >
+			  <tr id="memh" style="margin-bottom:60px">
 				<td><div class="tIndex " style="font-weight:;margin-bottom:60px"></div></td>
 				<td><div class="tName " style="font-weight:bold">NAME</div></td> 
 				<td><div class="tCourse " style="font-weight:bold">COURSE</div></td> 
 				<td><div class="tPlace " style="font-weight:bold">CURRENT CO-COORDINATES</div></td>
 			  </tr>
 			  
-			  <tr>
+			  <tr id="mem1">
 				<td><div class="tIndex tev">1</div></td>
 				<td><div class="tName tev">Rohith Soman</div></td> 
 				<td><div class="tCourse tev" >PhD</div></td> 
 				<td><div class="tPlace tev">IISc</div></td>
 			  </tr>
-			  <tr>
+			  <tr id="mem2">
 				<td><div class="tIndex tod">2</div></td>
 				<td><div class="tName tod">Jude Baby</div></td> 
 				<td><div class="tCourse tod" >M Tech</div></td> 
@@ -116,9 +123,11 @@ $("#variable_height").scroll(function() {
 });
 </script> 
 <script type="text/javascript">
+  var MemberData = [];
   $(document).ready(function() {
 		$('#variable_height').css('width',$( document ).width()-10) ;
   });
+  LoadMembers("2015");
 </script> 
 
 </body></html>
