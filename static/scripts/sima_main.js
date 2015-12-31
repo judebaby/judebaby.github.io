@@ -204,6 +204,7 @@ function TabClicked(id){
 }
 
 var article_type = 'articles';
+
 function ArticleClicked(id){
 	console.log(id);
 	window.sessionStorage.setItem("ArticleToLoad","articles/SCL");
@@ -215,7 +216,12 @@ function ArticleClicked(id){
 			k++;
 		}
 	}
-	window.location.href = "./main_article.html";
+	
+	if(article_type=='articles'){
+	 window.location.href = "./main_article.html";
+	}else{
+	 window.location.href = "./main_discussions.html";
+	}
 }
 
 
@@ -346,12 +352,17 @@ function LoadArticle(name){
 			$('#fbcommentplugin').empty().append('<div class="fb-comments" data-href="http://simaiisc.org/home/main/main_article_{0}.html" data-width="650" data-numposts="5"></div>'.format([article.article_title]));
 		});
 		
-		console.log('Fetching galleries');
-		jQuery.getJSON('../../static/pics/galleries/'+ article.galleries + '/gallery.json',function(data){
-			galleries = data.galleries;
-			console.log(galleries)
-			SIMASliderInit();
-		});
+		var patt = new RegExp('articles', "i");
+		if(patt.test(name)){
+			console.log('Fetching galleries');
+			jQuery.getJSON('../../static/pics/galleries/'+ article.galleries + '/gallery.json',function(data){
+				galleries = data.galleries;
+				console.log(galleries)
+				SIMASliderInit();
+			});
+		}else{		
+		 $('#SIMAGallery').css('background-image','url(../../home/main/discussions/' + article.pic + ')')
+		}
 		$('#variable_height').css('width',$( document ).width()-10) ;
 		$('#variable_height').css('height',$( document ).height()-260) ;
 	});
