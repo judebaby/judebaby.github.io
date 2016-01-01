@@ -389,3 +389,11 @@ background:rgba(255,230,60,1);
 line-height:30px;
 background:rgba(255,230,60,0.6);
 }
+
+.btnSIMA{
+line-height:40px;float:right;padding-left:10px;padding-right:10px;height:42px;cursor:pointer;;text-align:center;background-color:rgba(0,0,0,0.2);font-family:TitleFont;font-size:large;border: none;
+}
+.btnSIMA:hover{
+cursor:pointer;
+background:rgba(0,0,0,0.4);
+}
