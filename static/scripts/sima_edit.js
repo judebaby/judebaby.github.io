@@ -45,6 +45,9 @@ function ArticleSubmit(){
 	 data.article.author_pic = $('#article_author_name').html().trim() + '.jpg';
 	 
 	 var s = [];
+	 
+	 s = s + JSON.stringify({"article_type" : data.article_type}, undefined, 2)  + '\r\n\r\n';
+	 s = s + '-SPLIT--TYPE--HERE-'  + '\r\n\r\n';	 
 	 s = s + JSON.stringify({"abstract" : data.article_abstract}, undefined, 2)  + '\r\n\r\n';
 	 s = s + '-SPLIT--ABSTRACT--HERE-'  + '\r\n\r\n';	 
      s = s + JSON.stringify({"article" : data.article}, undefined, 2) + '\r\n\r\n';	 
