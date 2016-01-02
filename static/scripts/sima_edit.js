@@ -48,7 +48,7 @@ function ArticleSubmit(){
 	 
 	 s = s + JSON.stringify({"article_type" : data.article_type}, undefined, 2)  + '\r\n\r\n';
 	 s = s + '-SPLIT--TYPE--HERE-'  + '\r\n\r\n';	 
-	 s = s + JSON.stringify({"abstract" : data.article_abstract}, undefined, 2)  + '\r\n\r\n';
+	 s = s + JSON.stringify({"article_abstract" : data.article_abstract}, undefined, 2)  + '\r\n\r\n';
 	 s = s + '-SPLIT--ABSTRACT--HERE-'  + '\r\n\r\n';	 
      s = s + JSON.stringify({"article" : data.article}, undefined, 2) + '\r\n\r\n';	 
 	 //var s = JSON.stringify(data, undefined, 2);
@@ -72,6 +72,28 @@ console.log('Update picture');
    $('#MainPicSelect').trigger('click');
  }
  
+}
+function ArticleLoad(){
+
+var s = $('#article_text_load').text().trim();
+var s1 = s.substring(0,s.indexOf('-SPLIT--TYPE--HERE-')).trim();
+s = s.substring(s.indexOf('-SPLIT--TYPE--HERE-')+19);
+var s2 = s.substring(0,s.indexOf('-SPLIT--ABSTRACT--HERE-')).trim();
+var s3 = s.substring(s.indexOf('-SPLIT--ABSTRACT--HERE-')+23).trim();
+
+s1 = eval("("+s1+")");
+s2 = eval("("+s2+")");
+s3 = eval("("+s3+")");
+
+$('#ArticleType').val(s1.article_type);
+$('#abstract_title').empty().append(s2.article_abstract.article_title);
+$('#discuss_abstract_text').empty().append(s2.article_abstract.article_abstract);
+
+$('#article_title').empty().append(s3.article.article_title);
+$('#article_text_text').empty().append(s3.article.article);
+$('#article_author_name').empty().append(s3.article.article_author);
+$('#article_author_text').empty().append(s3.article.about_author);
+
 }
 
 /*
