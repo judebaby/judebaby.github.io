@@ -5,12 +5,13 @@ function chk_select(format) {
     var flag = 0;
     sel = window.getSelection();
     for (var i = 0; i < sel.rangeCount; i++) {
+	/*
         var s = sel.getRangeAt(i).startContainer.parentNode.parentNode.id;
         var e = sel.getRangeAt(i).endContainer.parentNode.parentNode.id;		
         if (s == "article_text_text") flag = 1;
         if (flag = 1 && e == "article_text_text" || e == "child") flag = 2;
-		
-		if (flag == 2) {
+	*/	
+	//	if (flag == 2) {
 		  var range;
 		  var text = sel.toString();
 		  range = sel.getRangeAt(i);
@@ -20,7 +21,7 @@ function chk_select(format) {
 		  element.appendChild(document.createTextNode(text));
 		  range.insertNode(element);
 		  
-		}
+	//	}
 		
     }
 }

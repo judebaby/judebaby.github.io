@@ -4,20 +4,20 @@
 			"article_type" : "RESEARCH HIGHLIGHTS",
 			"article_list" : [
 								{
-									"article_title" : "Nano-Capsules for Drug Delivery",
-									"article_image" : "discuss.jpg",
-									"article_abstract" : "Stimuli responsive protamine based nanocapsules for enhanced biodegradable for enhanced bioavailability and intracellular delivery of anti-cancer drugs"
+									"article_title": "Nano-Capsules for Drug Delivery",
+									"article_image": "Nano-Capsules for Drug Delivery_icon.jpg",
+									"article_abstract": "Delivery devices capable of responding to disease specific stimuli have generated significant scientific and technological interest due to their potential application as targeted and controlled drug-release systems."
 								},
 								{
-									"article_title" : "Friction Stir Processing for better materials",
-									"article_image" : "discuss.jpg",
-									"article_abstract" : "Development of microstructure, texture and residual stresses during friction stir processing of aluminium alloys"
+									"article_title": "Friction Stir Processing for better materials",
+									"article_image": "Friction Stir Processing for better materials_icon.jpg",
+									"article_abstract": "Aluminium alloys are still dominant as the most widely used materials in critical structural applications such as aerospace, marine and automotive industries due to their high strength to weight ratio."
 								},
 								{
-									"article_title" : "Role of RAG's in battle for survival",
-									"article_image" : "discuss.jpg",
-									"article_abstract" : "How Recombination Activating Genes help in structure-specific nuclease action and Why new HIV drugs may lead to cancer"
-								}
+									"article_title": "Role of RAG's in battle for survival",
+									"article_image": "Role of RAG's in battle for survival_icon.jpg",
+									"article_abstract": "How Recombination Activating Genes help in structure-specific nuclease action and Why new HIV drugs may lead to cancer"
+								}								
 							 ]
 		},
 		{		
