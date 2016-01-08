@@ -16,16 +16,19 @@
 	var nt = 20;
     var current_order = 0;
 	var current_l_image = 0;
+	var CarouselDir = 1;
     function setup() { 
 	
 		var w = $( window ).width();
 		w = w > 1024 ? 1024: w;
 		$('#content').width(w);
 		
-		jQuery('#SIMA_MainCarousel'). 
+		$('#SIMA_MainCarousel'). 
 		addClass('Fixed_Position'). 
 		append('<canvas id="my-canvas"  width="1200" height="800"> </canvas>'); 
 	
+		$('#SIMA_MainCarousel').hover(MouseOnCarousel,MouseOffCarousel);
+		
         var canvas=document.getElementById("my-canvas"); 
 		
 		CarouselConfig.carousel_height = 275;
@@ -44,35 +47,22 @@
 		canvas.height=CarouselConfig.carousel_height;
 		
 		
-        //if (canvas.getContext) { 
-        //    			
-        //} 
 		
-		//imgs[image_id] = new Image() ;
-		//imgs[image_id] .src = '../../static/pics/main/' + background_images[image_id] + '.jpg';	
-		//imgs[image_id] .src = '../../static/pics/main/' + 'bg1' + '.jpg';	
-		//imgs[image_id] .onload = OnImageLoad;
-		
-		//CarouselConfig.carousel_height = 225;
-		//CarouselConfig.main_img_width  = 450;
-		//CarouselConfig.config = [[0.5,0,0],[0.6,0,1],[0.8,60,1],[1,140,1],[0.8,310,1],[0.6,460,1],[0.5,460,0]];
-		
-
-		//CarouselConfig.config = [[0.5,0,0],[0.7,0,1],[0.89,59,1],[1,147,1],[0.89,0,1],[0.7,0,1],[0.5,0,0]];
-		
-		
-		//var x = CarouselConfig.main_img_width + CarouselConfig.config[3][1] + CarouselConfig.config[3][1] - CarouselConfig.config[2][1];
-		//CarouselConfig.config[4][1] = x - CarouselConfig.main_img_width*CarouselConfig.config[4][0];
-		//x = CarouselConfig.main_img_width + CarouselConfig.config[3][1] + CarouselConfig.config[3][1];
-		//CarouselConfig.config[5][1] = x - CarouselConfig.main_img_width*CarouselConfig.config[5][0];
-		//CarouselConfig.config[6][1] = CarouselConfig.config[6][1];
-		
-	    CarouselConfig.DrawOrder = [[0,1,5,2,4,3],[5,0,4,1,3,2]];
-		//CarouselConfig.DrawOrder = [[0,1,2,3,4,5],[0,1,2,3,4,5]];
+	    CarouselConfig.DrawOrder = [[0,1,5,2,4,3],[5,0,4,1,3,2],[0,1,5,2,4,3]];
 		current_order = 0;
 		OnImageLoad();
+		
     } 
 	
+	function MouseOnCarousel(){
+		console.log("In");
+		//RunCarousel();
+		stopTimer() ;
+	}
+	function MouseOffCarousel(){
+		console.log("Out");
+		RunCarousel();
+	}
     function OnImageLoad(){
 	
 	    if(image_id < nImages){
@@ -113,20 +103,23 @@
 	function DrawImages(){
 		sima_carousel_context.clearRect(0, 0, 1200,800);
 		var l = t/nt;
+	
 		for(var i=0;i<CarouselConfig.config.length-1;i++){
 		  var j = CarouselConfig.DrawOrder[current_order][i];
 		  var imid = current_l_image + j;
 		  imid = imid > (imgs.length - 1) ? imid - imgs.length : imid ;
-		  DrawImageOnCanvas(imid,j,j+1,l);
+		  if(CarouselDir==1)   DrawImageOnCanvas(imid,j,j+1,l);
+		  else DrawImageOnCanvas(imid,j+1,j,l);
 		}
+		
 		t = t + 1;
 		if(t==nt/2){
-			current_order = 1;
+			current_order = CarouselDir==1?1:2;
 		}
 		if(t<nt){
 		  timer = setTimeout(function() {DrawImages()},10); 
 		}else{
-			current_l_image = current_l_image - 1 ;
+			current_l_image = current_l_image - CarouselDir ;
 			current_l_image = current_l_image == imgs.length ? 0 : current_l_image;
 			current_l_image = current_l_image == -1 ? imgs.length-1 : current_l_image;
 			timer = setTimeout(function() {RunCarousel()},2000); 
