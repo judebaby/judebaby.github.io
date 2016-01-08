@@ -8,15 +8,22 @@
     
      
 	var timer=null; 
+	var timer_main=null;
 	var CarouselConfig =[]; 
     //Call setup to configure the Canvas 
-    setup(); 
+    
          
     var t = 0;
 	var nt = 20;
     var current_order = 0;
 	var current_l_image = 0;
 	var CarouselDir = 1;
+	var Carousel_AutoRun = false;
+	var image_load_sequence = [3,4,2,5,1,0,11,10,9,8,7,6];
+	
+	var setTime =  []; 
+	
+	setup(); 
     function setup() { 
 	
 		var w = $( window ).width();
@@ -56,26 +63,60 @@
 	
 	function MouseOnCarousel(){
 		console.log("In");
-		//RunCarousel();
 		stopTimer() ;
+		Carousel_AutoRun = false;
 	}
 	function MouseOffCarousel(){
 		console.log("Out");
+		Carousel_AutoRun = true;
 		RunCarousel();
 	}
+
     function OnImageLoad(){
 	
 	    if(image_id < nImages){
-			imgs[image_id] = new Image() ;
+			var imid = image_load_sequence[image_id];
+			imgs[imid] = new Image() ;
 		//imgs[image_id] .src = '../../static/pics/main/' + background_images[image_id] + '.jpg';	
-			imgs[image_id] .src = '../../static/pics/main/' + 'bg{0}'.format([(image_id+1).toString()]) + '.jpg';	
-			imgs[image_id] .onload = OnImageLoad;
+			imgs[imid] .src = '../../static/pics/main/' + 'bg{0}'.format([(imid+1).toString()]) + '.jpg';	
+			imgs[imid] .onload = OnImageLoad;			
+						
+			
+			//Partial Drawing Carousel
+			if(image_id==1){				
+				sima_carousel_context.clearRect(0, 0, sima_carousel_context.canvas.width,sima_carousel_context.canvas.height);
+				DrawImageOnCanvas(image_load_sequence[0],3,2,0);				
+			}
+			if(image_id==3){
+				sima_carousel_context.clearRect(0, 0, sima_carousel_context.canvas.width,sima_carousel_context.canvas.height);
+				DrawImageOnCanvas(image_load_sequence[2],3,4,0);
+				DrawImageOnCanvas(image_load_sequence[1],4,5,0);
+				DrawImageOnCanvas(image_load_sequence[0],2,3,0);
+			}
+			if(image_id==5){
+				sima_carousel_context.clearRect(0, 0, sima_carousel_context.canvas.width,sima_carousel_context.canvas.height);
+				DrawImageOnCanvas(image_load_sequence[4],1,4,0);
+				DrawImageOnCanvas(image_load_sequence[3],5,5,0);
+				DrawImageOnCanvas(image_load_sequence[2],3,4,0);
+				DrawImageOnCanvas(image_load_sequence[1],4,5,0);
+				DrawImageOnCanvas(image_load_sequence[0],2,3,0);
+				setTime = new Date().getTime();
+				
+			}
+			if(image_id>5){				
+				if(setTime + 2000 < new Date().getTime()){
+					Carousel_AutoRun=false;
+					RunCarousel();
+					setTime = new Date().getTime();
+				}
+			}
 			image_id = image_id + 1;
-			console.log(image_id);
 		}else{
 			console.log('Loaded Images');
 			//DrawImages();
 			//timer = setTimeout(function() {},1000); 
+			stopTimer();
+			Carousel_AutoRun=true;
 			RunCarousel();
 		}
 		//UpdateCarousel();
@@ -91,7 +132,7 @@
 		var yloc = CarouselConfig.carousel_height*(1-zoom)*0.5;
 		var height = CarouselConfig.carousel_height*zoom;
 		var width = CarouselConfig.main_img_width*zoom;	
-		sima_carousel_context.drawImage(imgs[image_id],0,0,imgs[0].naturalWidth,imgs[0].naturalHeight,xloc,yloc,width,height);
+		sima_carousel_context.drawImage(imgs[image_id],0,0,imgs[image_id].naturalWidth,imgs[image_id].naturalHeight,xloc,yloc,width,height);
 		
 	}
 	function RunCarousel(){
@@ -101,7 +142,7 @@
 		DrawImages();
 	}
 	function DrawImages(){
-		sima_carousel_context.clearRect(0, 0, 1200,800);
+		sima_carousel_context.clearRect(0, 0, sima_carousel_context.canvas.width,sima_carousel_context.canvas.height);
 		var l = t/nt;
 	
 		for(var i=0;i<CarouselConfig.config.length-1;i++){
@@ -122,7 +163,10 @@
 			current_l_image = current_l_image - CarouselDir ;
 			current_l_image = current_l_image == imgs.length ? 0 : current_l_image;
 			current_l_image = current_l_image == -1 ? imgs.length-1 : current_l_image;
-			timer = setTimeout(function() {RunCarousel()},2000); 
+			
+			if(Carousel_AutoRun == true){
+				timer_main = setTimeout(function() {RunCarousel()},2000); 
+			}
 		}
 	}
 	function UpdateCarousel(){		
@@ -135,7 +179,7 @@
    
      
     function stopTimer() { 
-        clearTimeout(timer);     
+        clearTimeout(timer_main);     
     } 
      
    

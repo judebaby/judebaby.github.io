@@ -81,7 +81,10 @@ table, table td {
 	font-family: 'BlockFont';
 	src: url('../../static/css/BERNHC.woff') format('woff');
 }
-
+@font-face{ 
+	font-family: 'TestFont';
+	src: url('../../static/css/CALIST.woff') format('woff');
+}
 #main {
 	position: absolute;
 	top: 0;
@@ -307,7 +310,7 @@ cursor:pointer;
 padding-left:10px;
 padding-right:10px;
 height:30px;
-font-family:HeaderFont;
+font-family:TestFont;
 font-size:large;
 line-height:30px;
 color:rgb(20,20,20);	
