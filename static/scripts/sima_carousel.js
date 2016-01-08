@@ -89,17 +89,17 @@
 			}
 			if(image_id==3){
 				sima_carousel_context.clearRect(0, 0, sima_carousel_context.canvas.width,sima_carousel_context.canvas.height);
-				DrawImageOnCanvas(image_load_sequence[2],3,4,0);
-				DrawImageOnCanvas(image_load_sequence[1],4,5,0);
-				DrawImageOnCanvas(image_load_sequence[0],2,3,0);
+				DrawImageOnCanvas(image_load_sequence[2],2,1,0);
+				DrawImageOnCanvas(image_load_sequence[1],4,3,0);
+				DrawImageOnCanvas(image_load_sequence[0],3,2,0);
 			}
 			if(image_id==5){
 				sima_carousel_context.clearRect(0, 0, sima_carousel_context.canvas.width,sima_carousel_context.canvas.height);
-				DrawImageOnCanvas(image_load_sequence[4],1,4,0);
-				DrawImageOnCanvas(image_load_sequence[3],5,5,0);
-				DrawImageOnCanvas(image_load_sequence[2],3,4,0);
-				DrawImageOnCanvas(image_load_sequence[1],4,5,0);
-				DrawImageOnCanvas(image_load_sequence[0],2,3,0);
+				DrawImageOnCanvas(image_load_sequence[4],1,0,0);
+				DrawImageOnCanvas(image_load_sequence[3],5,4,0);
+				DrawImageOnCanvas(image_load_sequence[2],2,1,0);
+				DrawImageOnCanvas(image_load_sequence[1],4,3,0);
+				DrawImageOnCanvas(image_load_sequence[0],3,2,0);
 				setTime = new Date().getTime();
 				
 			}
