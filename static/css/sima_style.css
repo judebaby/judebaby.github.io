@@ -347,7 +347,8 @@ text-align:center;
 .main_ic_container{
 float:left;
 width:120px;
-margin-left:40px;
+margin-left:10px;
+margin-right:10px;
 }
 
 #discuss_abstract_text {
@@ -440,4 +441,25 @@ line-height:40px;float:right;padding-left:10px;padding-right:10px;height:42px;cu
 .btnSIMA:hover{
 cursor:pointer;
 background:rgba(0,0,0,0.4);
+}
+
+#SIMA_MainCarousel:hover{
+cursor:pointer;
+}
+
+
+#CarCL{
+visibility:hidden;
+position:absolute;width:60px;height:275px;float:left;background-image:url(../../static/pics/main/GalleryCursorL2.png);background-size:cover;
+}
+#CarCR{
+visibility:hidden;
+position:absolute;width:60px;height:275px;float:left;background-image:url(../../static/pics/main/GalleryCursorR2.png);background-size:cover;
+}
+
+#CarCL:hover{
+background-image:url("../../static/pics/main/GalleryCursorL1.png");
+}
+#CarCR:hover{
+background-image:url("../../static/pics/main/GalleryCursorR1.png");
 }

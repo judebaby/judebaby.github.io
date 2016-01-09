@@ -3,6 +3,7 @@
 	var nImages  = 12;
 	
 	var imgs = new Array();
+	var img_bk = [];
 	var sima_carousel_context; 
  // Add a new Canvas and position 
     
@@ -17,32 +18,49 @@
 	var nt = 20;
     var current_order = 0;
 	var current_l_image = 0;
-	var CarouselDir = 1;
+	var aCarouselDir = -1;
 	var Carousel_AutoRun = false;
-	var image_load_sequence = [3,4,2,5,1,0,11,10,9,8,7,6];
+	//var image_load_sequence = [3,4,2,5,1,0,11,10,9,8,7,6];
+	var image_load_sequence = [3,4,2,5,1,0,6,7,8,9,10,11];
 	
 	var setTime =  []; 
-	
+	var OnHover = false;
+	var isAnimationRunning=false;
 	setup(); 
+	
     function setup() { 
 	
 		var w = $( window ).width();
 		w = w > 1024 ? 1024: w;
+		//w = 768;
 		$('#content').width(w);
+		$('#SIMA_MainCarousel').width(w);
 		
-		$('#SIMA_MainCarousel'). 
-		addClass('Fixed_Position'). 
-		append('<canvas id="my-canvas"  width="1200" height="800"> </canvas>'); 
-	
+		var zoom = w/768;		
+		$('#SIMA_MainCarousel').height($('#SIMA_MainCarousel').height()*zoom);	
+		$('#CarCL').width($('#CarCL').width()*zoom).height($('#CarCL').height()*zoom);
+		$('#CarCR').width($('#CarCR').width()*zoom).height($('#CarCR').height()*zoom).css({left:$('#CarCR').position().left*zoom});
+		//console
+		
+		if(w>1000){
+			$('.main_ic_container').css({'margin-left' : parseInt($('.main_ic_container').css('margin-left'))*zoom*2})
+			$('.main_ic_container').css({'margin-right' : parseInt($('.main_ic_container').css('margin-right'))*zoom*2})		
+	    	$('#UpcomingContainer').css({'margin-left' : '60px'});
+		}
+		
 		$('#SIMA_MainCarousel').hover(MouseOnCarousel,MouseOffCarousel);
-		
+		$('#CarCL').click( function(event){event.stopPropagation();RunCarousel(-1);});
+		$('#CarCR').click( function(event){event.stopPropagation();RunCarousel(1);});
+		$('#SIMA_MainCarousel').click(function(){
+			console.log('Gal');
+		});
         var canvas=document.getElementById("my-canvas"); 
 		
 		CarouselConfig.carousel_height = 275;
 		CarouselConfig.main_img_width  = 456;
-		CarouselConfig.config = [[0.5,0,0],[0.7,0,1],[0.89,59,1],[1,147,1],[0.89,285,1],[0.7,431,1],[0.5,431,0]];
+		CarouselConfig.config = [[0.5,0,0],[0.7,0,1],[0.89,61,1],[1,154,1],[0.89,296,1],[0.7,451,1],[0.5,451,0]];
 		
-		var zoom = w/750;		
+		
 		CarouselConfig.carousel_height = CarouselConfig.carousel_height*zoom;
 		CarouselConfig.main_img_width  = CarouselConfig.main_img_width*zoom;		
 		for (var i = 0 ; i < 7;i++){
@@ -62,14 +80,22 @@
     } 
 	
 	function MouseOnCarousel(){
+		//OnHover = true;
 		console.log("In");
 		stopTimer() ;
 		Carousel_AutoRun = false;
+		$('#CarCL').css('visibility','visible');
+		$('#CarCR').css('visibility','visible');
+		//if(isAnimationRunning){current_order=1;DrawImages(1,false);}
+		//else {current_order=0;DrawImages(0,false);}
 	}
 	function MouseOffCarousel(){
+		//OnHover=false;
 		console.log("Out");
+		$('#CarCL').css('visibility','hidden');
+		$('#CarCR').css('visibility','hidden');
 		Carousel_AutoRun = true;
-		RunCarousel();
+		RunCarousel(aCarouselDir);
 	}
 
     function OnImageLoad(){
@@ -85,45 +111,44 @@
 			//Partial Drawing Carousel
 			if(image_id==1){				
 				sima_carousel_context.clearRect(0, 0, sima_carousel_context.canvas.width,sima_carousel_context.canvas.height);
-				DrawImageOnCanvas(image_load_sequence[0],3,2,0);				
+				DrawImageOnCanvas(imgs[image_load_sequence[0]],3,2,0);				
 			}
 			if(image_id==3){
 				sima_carousel_context.clearRect(0, 0, sima_carousel_context.canvas.width,sima_carousel_context.canvas.height);
-				DrawImageOnCanvas(image_load_sequence[2],2,1,0);
-				DrawImageOnCanvas(image_load_sequence[1],4,3,0);
-				DrawImageOnCanvas(image_load_sequence[0],3,2,0);
+				DrawImageOnCanvas(imgs[image_load_sequence[2]],2,1,0);
+				DrawImageOnCanvas(imgs[image_load_sequence[1]],4,3,0);
+				DrawImageOnCanvas(imgs[image_load_sequence[0]],3,2,0);
 			}
 			if(image_id==5){
 				sima_carousel_context.clearRect(0, 0, sima_carousel_context.canvas.width,sima_carousel_context.canvas.height);
-				DrawImageOnCanvas(image_load_sequence[4],1,0,0);
-				DrawImageOnCanvas(image_load_sequence[3],5,4,0);
-				DrawImageOnCanvas(image_load_sequence[2],2,1,0);
-				DrawImageOnCanvas(image_load_sequence[1],4,3,0);
-				DrawImageOnCanvas(image_load_sequence[0],3,2,0);
+				DrawImageOnCanvas(imgs[image_load_sequence[4]],1,0,0);
+				DrawImageOnCanvas(imgs[image_load_sequence[3]],5,4,0);
+				DrawImageOnCanvas(imgs[image_load_sequence[2]],2,1,0);
+				DrawImageOnCanvas(imgs[image_load_sequence[1]],4,3,0);
+				DrawImageOnCanvas(imgs[image_load_sequence[0]],3,2,0);
 				setTime = new Date().getTime();
 				
 			}
 			if(image_id>5){				
 				if(setTime + 2000 < new Date().getTime()){
 					Carousel_AutoRun=false;
-					RunCarousel();
+					RunCarousel(aCarouselDir);
 					setTime = new Date().getTime();
 				}
 			}
 			image_id = image_id + 1;
 		}else{
+			img_bk = new Image() ;
+			img_bk.src = '../../static/pics/main/' + 'bg_frame.png';
 			console.log('Loaded Images');
-			//DrawImages();
-			//timer = setTimeout(function() {},1000); 
 			stopTimer();
 			Carousel_AutoRun=true;
-			RunCarousel();
+			RunCarousel(aCarouselDir);
 		}
-		//UpdateCarousel();
 	}
 	//Config = [zoom,xloc,opacity]
 	
-	function DrawImageOnCanvas(image_id,config_id_s,config_id_e,l){
+	function DrawImageOnCanvas(image,config_id_s,config_id_e,l){
 	    //console.log([image_id,config_id_s,config_id_e,l])
 		var zoom  = CarouselConfig.config[config_id_s][0] + (CarouselConfig.config[config_id_e][0]-CarouselConfig.config[config_id_s][0])*l;
 		var xloc  = CarouselConfig.config[config_id_s][1] + (CarouselConfig.config[config_id_e][1]-CarouselConfig.config[config_id_s][1])*l;
@@ -132,16 +157,17 @@
 		var yloc = CarouselConfig.carousel_height*(1-zoom)*0.5;
 		var height = CarouselConfig.carousel_height*zoom;
 		var width = CarouselConfig.main_img_width*zoom;	
-		sima_carousel_context.drawImage(imgs[image_id],0,0,imgs[image_id].naturalWidth,imgs[image_id].naturalHeight,xloc,yloc,width,height);
+		sima_carousel_context.drawImage(image,0,0,image.naturalWidth,image.naturalHeight,xloc,yloc,width,height);
 		
 	}
-	function RunCarousel(){
+	function RunCarousel(CarouselDir){
 	    t = 0;
 		current_order=0;
 		//console.log(current_l_image)
-		DrawImages();
+		isAnimationRunning=true;
+		DrawImages(CarouselDir);
 	}
-	function DrawImages(){
+	function DrawImages(CarouselDir){
 		sima_carousel_context.clearRect(0, 0, sima_carousel_context.canvas.width,sima_carousel_context.canvas.height);
 		var l = t/nt;
 	
@@ -149,37 +175,36 @@
 		  var j = CarouselConfig.DrawOrder[current_order][i];
 		  var imid = current_l_image + j;
 		  imid = imid > (imgs.length - 1) ? imid - imgs.length : imid ;
-		  if(CarouselDir==1)   DrawImageOnCanvas(imid,j,j+1,l);
-		  else DrawImageOnCanvas(imid,j+1,j,l);
+		  if(CarouselDir==1)   DrawImageOnCanvas(imgs[imid],j,j+1,l);
+		  else DrawImageOnCanvas(imgs[imid],j+1,j,l);
 		}
-		
+		//if(OnHover==true){
+		//	DrawImageOnCanvas(img_bk,3,2,0);
+		//}
 		t = t + 1;
 		if(t==nt/2){
 			current_order = CarouselDir==1?1:2;
 		}
 		if(t<nt){
-		  timer = setTimeout(function() {DrawImages()},10); 
+		  timer = setTimeout(function() {DrawImages(CarouselDir)},10); 
 		}else{
+			//isAnimationRunning=false;
+			//if(IncrementOnDone){
 			current_l_image = current_l_image - CarouselDir ;
 			current_l_image = current_l_image == imgs.length ? 0 : current_l_image;
 			current_l_image = current_l_image == -1 ? imgs.length-1 : current_l_image;
-			
+			//}
 			if(Carousel_AutoRun == true){
-				timer_main = setTimeout(function() {RunCarousel()},2000); 
+				timer_main = setTimeout(function() {RunCarousel(CarouselDir)},2000); 
 			}
 		}
 	}
-	function UpdateCarousel(){		
-		console.log('Drawing Carousel..')
-		sima_carousel_context.drawImage(imgs[0],50,25,400,400);
-		sima_carousel_context.globalAlpha = 0.5;
-		sima_carousel_context.drawImage(imgs[0],480,130,200,200,0,100,100,200);
-		console.log(imgs[0].naturalWidth )
-	}
+	
    
      
     function stopTimer() { 
         clearTimeout(timer_main);     
+		//clearTimeout(timer);   
     } 
      
    

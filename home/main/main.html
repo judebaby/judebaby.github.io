@@ -4,7 +4,6 @@
 	<link href="../../static/css/sima_style.css" rel="stylesheet" type="text/css" />
 	<script language="javascript" type="text/javascript" src="../../static/scripts/sima_main.js"></script>
 	<script language="javascript" type="text/javascript" src="../../static/scripts/jquery.js"></script>
-	<script src="../../static/scripts/jquery.cycle2.min.js"></script>
 </head>
 <body>
 
@@ -25,19 +24,27 @@
 			
 			
 			<div id="spacer" style="height:10px"></div>
-			<div id="SIMA_MainCarousel"></div>
-			<div id="spacer" style="height:10px"></div>
+			
+			<div id="SIMA_MainCarousel" style="width:768px;height:275px;overflow:hidden" >					
+					<div style="position:relative;width:768px;height:275px;float:left"><canvas id="my-canvas"> </canvas></div>
+					<div id="CarC" style="position:relative;width:768px;height:275px;float:left;top:-275px;">
+						<div id="CarCL" style=""></div>
+						<div id="CarCR" style="left:708px;"></div>
+					</div>
+			</div>
+			
+			<div id="spacer" style="height:40px"></div>
 			<!--div id="section_tab" style="" onclick="RunCarousel()"> Change </div-->	
-			<div style="width:1024;height:250px;">
-				<div style="float:left;width:30%;">			
+			<div style="">
+				<div style="position:relative;float:left;">			
 					<div class="main_tab" style="" onclick="window.location.href = '../../home/main/main_about.html'"> ABOUT US </div>
 					<div class="main_tab" style="" onclick="window.location.href = '../../home/main/main_gallery.html'"> ARCHIVES </div>
 					<div class="main_tab" style="" onclick="window.location.href = '../../home/main/main_article_list.html'"> ACTIVITIES </div>
 					<div class="main_tab" style="" onclick="window.location.href = '../../home/main/main_discussions_list.html'"> EZHUTHUPETTI</div>
 					<div class="main_tab" style="" onclick="window.location.href = '../../home/main/main_member_list.html'"> MEMBERS </div>				
 				</div>
-				<div style="float:left;width:70%">
-					<div style="text-align:center;font-family:TestFont;font-size:xx-large;margin-top:50px;color:rgb(80,80,80)">
+				<div id="UpcomingContainer" style="position:relative;float:left;margin-left:20px">
+					<div style="text-align:center;font-family:TestFont;font-size:xx-large;margin-top:10px;color:rgb(80,80,80)">
 						Upcoming Events
 				    </div>
 					<div id="spacer" style="height:30px"></div>
@@ -71,7 +78,7 @@
 			
 
 			<div id="spacer" style="height:60px"></div>
-			<div style="font-size:xx-large">
+			<div style="width:768px;font-size:xx-large">
 				<a href="../../home/main/main_submission.html">Submissions</a>
 			</div>
 			
