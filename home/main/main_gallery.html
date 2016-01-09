@@ -3,8 +3,10 @@
 	<title>SIMA</title>
 	<link href="../../static/css/sima_style.css" rel="stylesheet" type="text/css" />
 	<script language="javascript" type="text/javascript" src="../../static/scripts/sima_main.js"></script>
+	<script language="javascript" type="text/javascript" src="../../static/scripts/sima_maingallery.js"></script>
+	<script language="javascript" type="text/javascript" src="../../static/scripts/sima_slider.js"></script>
 	<script language="javascript" type="text/javascript" src="../../static/scripts/jquery.js"></script>
-	<script src="../../static/scripts/jquery.cycle2.min.js"></script>
+	
 </head>
 <body>
 
@@ -90,8 +92,8 @@
 				</div>
 			</div>
 
-			<div id="GalleryView" style="visibility:hidden;position:absolute;width:100%;height:456px;background:rgba(255,255,255,0.5);top:300px">
-				<div id="Gallery"  style="padding-left:20px;padding-top:60px">
+			<div id="GalleryView" style="visibility:hidden;position:absolute;width:100%;height:700px;background:rgba(0,0,0,0.9);top:220px">
+				<div id="Gallery"  style="padding-left:30px;padding-top:150px">
 					<div id="SIMAGallery" style="float:left;width:700px;height:336px;background:#fff;overflow: hidden;margin-bottom:10px">
 						<div style="position:relative;float:left;width:600px;height:336px;">				
 							<div id="SG0" class="SIMAGallery1" style="background-image: url('../../static/pics/main/bg1.jpg')" ></div>	
@@ -116,107 +118,22 @@
 </div>
 
 <script type="text/javascript">
-
-
 var SIMASlider = [];
 
 var article = [];
 var galleries=[];
 var MainGallery=[];
+</script> 
 
-$( function(){	
-	LoadGallery("SCL");
-	MainGallerySetup();
-});
-
-
-</script> <script>
+<script>
 
   var vis = 0;
   $(document).ready(function() {		
+  
+		console.log('Load Gallery : ' + window.sessionStorage.getItem("GalleryToLoad"));
 		
-		$(".SMGImage").click( function(){			
-			if(vis==0){
-			  $("#GalleryView").css('visibility','visible');
-			  vis = 1;
-			}else{
-			  $("#GalleryView").css('visibility','hidden');
-			  vis = 0;
-			}
-		});
-		
-		$('#GalleryView').click( function(){			
-			if(vis==0){
-			  $("#GalleryView").css('visibility','visible');
-			  vis = 1;
-			}else{
-			  $("#GalleryView").css('visibility','hidden');
-			  vis = 0;
-			}
-		});
-		
-		$(".SMGImage").mouseenter( function(){	
-		    MainGallery_hoverslide($(this),-1);
-		});
-		$(".SMGImage").mouseout( function(){	
-			MainGallery_hoverslide($(this),1);
-		});
-		
-        //options( 1 - ON , 0 - OFF)
-        var auto_slide = 1;
-            var hover_pause = 0;
-        var key_slide = 1;
-
-        //speed of auto slide(
-        var auto_slide_seconds = 5000;
-        /* IMPORTANT: i know the variable is called ...seconds but it's
-        in milliseconds ( multiplied with 1000) '*/
-
-        /*move the last list item before the first item. The purpose of this is
-        if the user clicks to slide left he will be able to see the last item.*/
-        //$('#carousel_ul li:first').before($('#carousel_ul li:last'));
-
-        //check if auto sliding is enabled
-        if(auto_slide == 1){
-            /*set the interval (loop) to call function slide with option 'right'
-            and set the interval time to the variable we declared previously */
-            var timer = setInterval('slide("left");flip();', auto_slide_seconds);
-
-            /*and change the value of our hidden field that hold info about
-            the interval, setting it to the number of milliseconds we declared previously*/
-            $('#hidden_auto_slide_seconds').val(auto_slide_seconds);
-        }
-
-        //check if hover pause is enabled
-        if(hover_pause == 1){
-            //when hovered over the list
-            $('#carousel_ul').hover(function(){
-                //stop the interval
-                clearInterval(timer)
-            },function(){
-                //and when mouseout start it again
-                timer = setInterval('slide("right")', auto_slide_seconds);
-            });
-
-        }
-
-        //check if key sliding is enabled
-        if(key_slide == 1){
-
-            //binding keypress function
-            $(document).bind('keypress', function(e) {
-                //keyCode for left arrow is 37 and for right it's 39 '
-				console.log(e.keyCode);
-                if(e.which==97){
-                        //initialize the slide to left function
-                        slide('left');
-                }else if(e.which==100){
-                        //initialize the slide to right function
-                        slide('right');
-                }
-            });
-
-        }
+		LoadGallery("SCL");
+		MainGallerySetup();
 
   });
 

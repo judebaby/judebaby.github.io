@@ -26,7 +26,12 @@
 	var setTime =  []; 
 	var OnHover = false;
 	var isAnimationRunning=false;
+	
+	var bglist = [];
+	
 	setup(); 
+	
+	
 	
     function setup() { 
 	
@@ -53,6 +58,10 @@
 		$('#CarCR').click( function(event){event.stopPropagation();RunCarousel(1);});
 		$('#SIMA_MainCarousel').click(function(){
 			console.log('Gal');
+			console.log(bglist[current_l_image].gallery);
+			
+			window.sessionStorage.setItem("GalleryToLoad",bglist[current_l_image].gallery);
+			window.location.href = "./main_gallery.html";
 		});
         var canvas=document.getElementById("my-canvas"); 
 		
@@ -69,13 +78,16 @@
 		
 		sima_carousel_context = canvas.getContext("2d"); 
         canvas.width=w;
-		canvas.height=CarouselConfig.carousel_height;
-		
-		
-		
+		canvas.height=CarouselConfig.carousel_height;		
 	    CarouselConfig.DrawOrder = [[0,1,5,2,4,3],[5,0,4,1,3,2],[0,1,5,2,4,3]];
 		current_order = 0;
-		OnImageLoad();
+		
+		//Load Image List
+		jQuery.getJSON('../../static/pics/main/bglist.json',function(data){
+			bglist = data.background_images;
+			OnImageLoad();
+		});
+		
 		
     } 
 	
@@ -104,7 +116,7 @@
 			var imid = image_load_sequence[image_id];
 			imgs[imid] = new Image() ;
 		//imgs[image_id] .src = '../../static/pics/main/' + background_images[image_id] + '.jpg';	
-			imgs[imid] .src = '../../static/pics/main/' + 'bg{0}'.format([(imid+1).toString()]) + '.jpg';	
+			imgs[imid] .src = '../../static/pics/main/' + bglist[imid].image; //'bg{0}'.format([(imid+1).toString()]) + '.jpg';	
 			imgs[imid] .onload = OnImageLoad;			
 						
 			
