@@ -14,18 +14,45 @@ function SwitchGallery(dir){
 	return dir;
 }
 
-function GalleryHitCheck(x,y){	  
-	  if(x>600){
+function GalleryHitCheck(x,y){	  	
+	 
 		if(y>2*112){
-			return -1;
-		}
-		if(y<112){
 			return 1;
 		}
-	  }
+		if(y<112){
+			return -1;
+		}
+	  
 	 return 0;
 }
+
+function SwitchToSmallGallery(){
+	console.log('Switching Gallery');
+	var x = 0;
+	if($(window).width() > 1366) x = 400;
+	zoom = ($(window).width()-100-x)/1024;
+	if(1){
+		var w = $('#SG0').width()*zoom;
+		var h = $('#SG0').height()*zoom;
+		$('#GalleryView').height(h+200);
+		
+		var pl = ($(window).width()-w-100)/2;
+		var pt = ($('#GalleryView').height()-h)/2;
+		
+		console.log($('#Gallery').width())
+		
+		$('#Gallery').css({'padding-left':pl}).css({'padding-top':pt});
+		
+		$('#SG0').width(w).height(h);		
+		$('#SIMAGalleryFrame').width(w).height(h);
+		$('#SIMA_GallerySelect').css({'left':pl+w}).css({'top':pt+(h-336)/2});
+		$('#SIMAGalleryFrame2_1').css({'left':pl+w}).css({'top':pt+(h-336)/2 + 0*112});
+		$('#SIMAGalleryFrame2_2').css({'left':pl+w}).css({'top':pt+(h-336)/2 + 1*112});
+		$('#SIMAGalleryFrame2_3').css({'left':pl+w}).css({'top':pt+(h-336)/2 + 2*112});
+	}
+}
 function SIMASliderInit(){
+
 	SIMASlider.temp=0;
 	
 	SIMASlider.el_sel  = [];
@@ -54,9 +81,13 @@ function SIMASliderInit(){
 	}
 	
 	p = 0 ;
-	p = p - $('#SIMAGalleryFrame').outerHeight()-4;
+	p = p - $('#SIMAGalleryFrame').outerHeight();
 	$('#SIMAGalleryFrame').css('z-index',116);
-	$('#SIMAGalleryFrame').css({'top' : p , left : 0});
+	$('#SIMAGalleryFrame2_1').css('z-index',117);
+	$('#SIMAGalleryFrame2_2').css('z-index',118);
+	$('#SIMAGalleryFrame2_3').css('z-index',119);
+	
+	//$('#SIMAGalleryFrame').css({'top' : p , left : 0});
 			
 	//Fill up till ava
 	var z = galleries.length > 3 ? 3 : galleries.length ;
@@ -64,45 +95,31 @@ function SIMASliderInit(){
 		SIMASlider.el_sel[2-i].append(galleries[j].tag);
 	}
 	
-	$("#SIMAGallery").mousemove(function(e){  
-		var rect = this.getBoundingClientRect();	  
-	    var x = parseInt(e.clientX)-rect.left;
-	    var y = rect.top-parseInt(e.clientY)+336;	
-		
-		b = GalleryHitCheck(x,y);
-		if(b==-1){
-			SIMASlider.el_sel[SIMASlider.car_sel[1]].css('color','rgb(190,190,190)');
-		}
-		if(b==1){
-			SIMASlider.el_sel[SIMASlider.car_sel[3]].css('color','rgb(190,190,190)');
-		}
-		if(b==0){
-			SIMASlider.el_sel[SIMASlider.car_sel[1]].css('color','rgb(255,255,255)');
-			SIMASlider.el_sel[SIMASlider.car_sel[3]].css('color','rgb(255,255,255)');
-		}
-		console.log();	  
-    });
-	$("#SIMAGallery").mouseleave(function(e){  
-		var rect = this.getBoundingClientRect();	  
-	    var x = parseInt(e.clientX)-rect.left;
-	    var y = rect.top-parseInt(e.clientY)+336;
-		for(var i = 0 ; i < 5 ; i++){
-			SIMASlider.el_sel[SIMASlider.car_sel[i]].css('color','rgb(255,255,255)');
-		}
-    });
-	$( '#SIMAGallery').click(function(e) {
-		var rect = this.getBoundingClientRect();	  
-	    var x = parseInt(e.clientX)-rect.left;
-	    var y = rect.top-parseInt(e.clientY)+336;
-		b = GalleryHitCheck(x,y);
-		SIMASliderSelectRoll(SwitchGallery(b));
-		for(var i = 0 ; i < 5 ; i++){
-			SIMASlider.el_sel[SIMASlider.car_sel[i]].css('color','rgb(255,255,255)');
-		}
-		return false;
+	$("#SIMAGalleryFrame2_1").mouseenter(function(){
+		SIMASlider.el_sel[SIMASlider.car_sel[1]].css('color','rgb(190,190,190)');
 	});
+	$("#SIMAGalleryFrame2_1").mouseleave(function(){
+		SIMASlider.el_sel[SIMASlider.car_sel[1]].css('color','rgb(255,255,255)');
+	});
+	$("#SIMAGalleryFrame2_1").click(function(event){
+		event.stopPropagation();
+		SIMASlider.el_sel[SIMASlider.car_sel[1]].css('color','rgb(255,255,255)');
+		SIMASliderSelectRoll(SwitchGallery(-1));
+	});
+	$("#SIMAGalleryFrame2_3").mouseenter(function(){
+		SIMASlider.el_sel[SIMASlider.car_sel[3]].css('color','rgb(190,190,190)');
+	});
+	$("#SIMAGalleryFrame2_3").mouseleave(function(){
+		SIMASlider.el_sel[SIMASlider.car_sel[3]].css('color','rgb(255,255,255)');
+	});
+	$("#SIMAGalleryFrame2_3").click(function(event){
+		event.stopPropagation();
+		SIMASlider.el_sel[SIMASlider.car_sel[3]].css('color','rgb(255,255,255)');
+		SIMASliderSelectRoll(SwitchGallery(1));
+	});	
 	
 	slider_timer  = setInterval('slide("left")', 5000);
+
 }
 
 

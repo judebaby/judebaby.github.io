@@ -90,30 +90,31 @@
 						<div id="SMG_I11" class="SMGImage"></div>
 					</div>
 				</div>
+			</div>			
 			</div>
-
-			<div id="GalleryView" style="visibility:hidden;position:absolute;width:100%;height:700px;background:rgba(0,0,0,0.9);top:220px">
-				<div id="Gallery"  style="padding-left:30px;padding-top:150px">
-					<div id="SIMAGallery" style="float:left;width:700px;height:336px;background:#fff;overflow: hidden;margin-bottom:10px">
-						<div style="position:relative;float:left;width:600px;height:336px;">				
-							<div id="SG0" class="SIMAGallery1" style="background-image: url('../../static/pics/main/bg1.jpg')" ></div>	
-							<div id="SIMAGalleryFrame" style="position:relative;float:left;width:700px;height:336px;overflow: hidden;box-shadow: 5px 0px 2px #111; background-size:contain;background-image: url('../../static/pics/main/galleryframe.png')" ></div>				
+		</div>
+		<div id="GalleryView" style="visibility:hidden;position:absolute;width:100%;height:700px;background:rgba(0,0,0,0.9);top:220px">
+				<div id="Gallery"  style="padding-left:320px;padding-top:70px">
+					<div id="SIMAGallery" style="">
+						<div style="">				
+							<div id="SG0" class="SIMAGallery1" style="position:relative;width:1024px;height:576px;overflow:hidden;background-image: url('../../static/pics/main/bg1.jpg') ; background-size:cover" ></div>	
+							<div id="SIMAGalleryFrame" style="position:absolute;float:left;width:1024px;height:576px;overflow: hidden;box-shadow: 5px 0px 2px #111; background-size:cover;background-image: url('../../static/pics/main/galleryframe_1.png')" ></div>				
 						</div>
-						<div style="position:relative;float:left;width:100px;height:560px;overflow:hidden">
+						<div style="">	
+						<div id="SIMA_GallerySelect" style="position:absolute;left:1344px;width:100px;height:336px;overflow:hidden;top:190px">
 							<div id="SG6" class="SIMAGallery2"  > 2012 </div>
 							<div id="SG7" class="SIMAGallery2"  > 2013 </div>
 							<div id="SG8" class="SIMAGallery2"  > 2014 </div>
 							<div id="SG9" class="SIMAGallery2"  > 2015 </div>
 							<div id="SG10" class="SIMAGallery2" > 2016 </div>
 						</div>
+						<div id="SIMAGalleryFrame2_1" style="position:absolute;width:100px;height:112px;left:1344px;top:190px;overflow: hidden;)" ></div>
+						<div id="SIMAGalleryFrame2_2" style="position:absolute;width:100px;height:112px;left:1344px;top:302px;overflow: hidden;background-size:cover;background-image: url('../../static/pics/main/galleryframe_2.png')" ></div>
+						<div id="SIMAGalleryFrame2_3" style="position:absolute;width:100px;height:112px;left:1344px;top:414px;overflow: hidden;)" ></div>						
+						</div>
 					</div>					
 				</div>		
-			</div>
-			
-			</div>
-		
 		</div>
-		
   </div>
 </div>
 
@@ -133,10 +134,13 @@ var MainGallery=[];
 		console.log('Load Gallery : ' + window.sessionStorage.getItem("GalleryToLoad"));
 		
 		LoadGallery("SCL");
+		SwitchToSmallGallery();
 		MainGallerySetup();
 
   });
-
+		$( window ).resize(function() {
+		  SwitchToSmallGallery();
+		});
 
 </script>
 

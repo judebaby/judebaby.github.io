@@ -234,13 +234,6 @@ text-justify: inter-word;
 	padding-top:10px;
 }
 
-
-
-
-
-
-
-
 #SMGbx{
 	float:left;
 }
@@ -251,13 +244,13 @@ overflow-y:auto;
 overflow-x:hidden;
 }
 .SIMAGallery1{
-position:relative;float:left;width:600px;height:340px;overflow: hidden;box-shadow: 5px 0px 2px #111; background-size:contain;
+position:relative;float:left;width:600px;height:336px;overflow: hidden;box-shadow: 5px 0px 2px #111; background-size:contain;
 }
 .SIMAGallery2{
 font-family:BlockFont;
 font-size:xx-large;
 position:absolute;width:100px;height:112px;overflow: hidden; background: #333 ; text-align : center;  line-height: 112px;
-
+color:rgb(255,255,255);
 }
 
 .SIMAGallery2:hover{

@@ -146,22 +146,20 @@ function MainGalleryClicksSetup(){
 				}				
 			}
 			console.log( MainGallery.galleries[id].name)
-			if(vis==0){
+			vis = $("#GalleryView").css('visibility');
+			if(vis=='hidden'){
 			  $("#GalleryView").css('visibility','visible');
-			  vis = 1;			  
 			}else{
 			  $("#GalleryView").css('visibility','hidden');
-			  vis = 0;
 			}
 		});
 		
-		$('#GalleryView').click( function(){			
-			if(vis==0){
+		$('#GalleryView').click( function(){
+			vis = $("#GalleryView").css('visibility');
+			if(vis=='hidden'){
 			  $("#GalleryView").css('visibility','visible');
-			  vis = 1;
 			}else{
 			  $("#GalleryView").css('visibility','hidden');
-			  vis = 0;
 			}
 		});
 		
