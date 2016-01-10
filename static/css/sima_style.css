@@ -247,8 +247,8 @@ overflow-x:hidden;
 position:relative;float:left;width:600px;height:336px;overflow: hidden;box-shadow: 5px 0px 2px #111; background-size:contain;
 }
 .SIMAGallery2{
-font-family:BlockFont;
-font-size:xx-large;
+font-family:TitleFont;
+font-size:x-large;
 position:absolute;width:100px;height:112px;overflow: hidden; background: #333 ; text-align : center;  line-height: 112px;
 color:rgb(255,255,255);
 }
@@ -421,11 +421,11 @@ background-size:cover;
 }
 .tev{
 line-height:30px;
-background:rgba(255,230,60,1);
+background:rgba(0,0,0,0.3);
 }
 .tod{
 line-height:30px;
-background:rgba(255,230,60,0.6);
+background:rgba(0,0,0,0.2);
 }
 
 .btnSIMA{

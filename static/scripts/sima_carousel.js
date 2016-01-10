@@ -15,7 +15,7 @@
     
          
     var t = 0;
-	var nt = 20;
+	var nt = 50;
     var current_order = 0;
 	var current_l_image = 0;
 	var aCarouselDir = -1;
@@ -53,9 +53,9 @@
 	    	$('#UpcomingContainer').css({'margin-left' : '60px'});
 		}
 		
-		$('#SIMA_MainCarousel').hover(MouseOnCarousel,MouseOffCarousel);
-		$('#CarCL').click( function(event){event.stopPropagation();RunCarousel(-1);});
-		$('#CarCR').click( function(event){event.stopPropagation();RunCarousel(1);});
+		//$('#SIMA_MainCarousel').hover(MouseOnCarousel,MouseOffCarousel);
+		$('#CarCL').click( function(event){event.stopPropagation();aCarouselDir=-1;RunCarousel(-1);});
+		$('#CarCR').click( function(event){event.stopPropagation();aCarouselDir=1 ;RunCarousel(1);});
 		$('#SIMA_MainCarousel').click(function(){
 			console.log('Gal');
 			console.log(bglist[current_l_image].gallery);
@@ -67,7 +67,8 @@
 		
 		CarouselConfig.carousel_height = 275;
 		CarouselConfig.main_img_width  = 456;
-		CarouselConfig.config = [[0.5,0,0],[0.7,0,1],[0.89,61,1],[1,154,1],[0.89,296,1],[0.7,451,1],[0.5,451,0]];
+		//Config = [zoom,xloc,opacity,filter_opacity,shadow_strength]
+		CarouselConfig.config = [[0.5,0,0,0.9,0],[0.7,0,1,0.7,0],[0.89,61,1,0.4,0],[0.95,154,1,0,1],[0.89,296,1,0.4,0],[0.7,451,1,0.7,0],[0.5,451,0,0.9,0]];
 		
 		
 		CarouselConfig.carousel_height = CarouselConfig.carousel_height*zoom;
@@ -158,18 +159,33 @@
 			RunCarousel(aCarouselDir);
 		}
 	}
-	//Config = [zoom,xloc,opacity]
+	
 	
 	function DrawImageOnCanvas(image,config_id_s,config_id_e,l){
 	    //console.log([image_id,config_id_s,config_id_e,l])
-		var zoom  = CarouselConfig.config[config_id_s][0] + (CarouselConfig.config[config_id_e][0]-CarouselConfig.config[config_id_s][0])*l;
-		var xloc  = CarouselConfig.config[config_id_s][1] + (CarouselConfig.config[config_id_e][1]-CarouselConfig.config[config_id_s][1])*l;
-		var alpha = CarouselConfig.config[config_id_s][2] + (CarouselConfig.config[config_id_e][2]-CarouselConfig.config[config_id_s][2])*l;
-		sima_carousel_context.globalAlpha = alpha;
+		var zoom   = CarouselConfig.config[config_id_s][0] + (CarouselConfig.config[config_id_e][0]-CarouselConfig.config[config_id_s][0])*l;
+		var xloc   = CarouselConfig.config[config_id_s][1] + (CarouselConfig.config[config_id_e][1]-CarouselConfig.config[config_id_s][1])*l;
+		var alpha  = CarouselConfig.config[config_id_s][2] + (CarouselConfig.config[config_id_e][2]-CarouselConfig.config[config_id_s][2])*l;
+		var filter = CarouselConfig.config[config_id_s][3] + (CarouselConfig.config[config_id_e][3]-CarouselConfig.config[config_id_s][3])*l;
+		var shadow = CarouselConfig.config[config_id_s][4] + (CarouselConfig.config[config_id_e][4]-CarouselConfig.config[config_id_s][4])*l;
+		
 		var yloc = CarouselConfig.carousel_height*(1-zoom)*0.5;
 		var height = CarouselConfig.carousel_height*zoom;
-		var width = CarouselConfig.main_img_width*zoom;	
+		var width = CarouselConfig.main_img_width*zoom;
+		
+		sima_carousel_context.globalAlpha = 1;
+		sima_carousel_context.shadowBlur=10*shadow;
+		sima_carousel_context.shadowColor="white";
+		sima_carousel_context.fillStyle='rgba(255,255,255,0)';
+		sima_carousel_context.fillRect(xloc,yloc,width,height);
+		
+		sima_carousel_context.globalAlpha = alpha;
 		sima_carousel_context.drawImage(image,0,0,image.naturalWidth,image.naturalHeight,xloc,yloc,width,height);
+		
+		sima_carousel_context.globalAlpha = 1;
+		sima_carousel_context.shadowBlur=0;
+		sima_carousel_context.fillStyle = 'rgba(0,0,0,{0})'.format([filter.toString()]);
+		sima_carousel_context.fillRect(xloc,yloc,width,height);	
 		
 	}
 	function RunCarousel(CarouselDir){
@@ -198,7 +214,7 @@
 			current_order = CarouselDir==1?1:2;
 		}
 		if(t<nt){
-		  timer = setTimeout(function() {DrawImages(CarouselDir)},10); 
+		  timer = setTimeout(function() {DrawImages(CarouselDir)},20); 
 		}else{
 			//isAnimationRunning=false;
 			//if(IncrementOnDone){

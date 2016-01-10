@@ -148,6 +148,7 @@ function MainGalleryClicksSetup(){
 			console.log( MainGallery.galleries[id].name)
 			vis = $("#GalleryView").css('visibility');
 			if(vis=='hidden'){
+			  $("#GalleryView").css({'top':$(window).scrollTop()});
 			  $("#GalleryView").css('visibility','visible');
 			}else{
 			  $("#GalleryView").css('visibility','hidden');
@@ -158,6 +159,7 @@ function MainGalleryClicksSetup(){
 			vis = $("#GalleryView").css('visibility');
 			if(vis=='hidden'){
 			  $("#GalleryView").css('visibility','visible');
+			  
 			}else{
 			  $("#GalleryView").css('visibility','hidden');
 			}

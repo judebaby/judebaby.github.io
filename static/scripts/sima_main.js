@@ -7,7 +7,11 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
 return isMobile;	
 }
 
-
+var articles=[];
+var TabId   = 0;
+var article_type = 'articles';
+var ArticleElements = [];
+ArticleElements.loaded = false;
 if (!String.prototype.format) {
 // This is the function.
 		String.prototype.format = function (args) {
@@ -35,12 +39,21 @@ if (!String.prototype.format) {
 
 
 function TabClicked(id){
-	var p = ($('#article_abs_1').outerHeight())*articles[id].start + 20;
+	TabId = id;
+	
+	var p = 0;
+	if(article_type=='articles') {
+	  p = ($('#article_abs_1').outerHeight())*articles[id].start + 20;
+	}else{
+	  p = 0;
+	  LoadDiscussionsList(article_type);
+	}
+	
 	$('#variable_height').stop().animate({scrollTop:p}, '500', 'swing', function() { 							
 	});
 }
 
-var article_type = 'articles';
+
 
 function ArticleClicked(id){
 	console.log(id);
@@ -75,8 +88,12 @@ function LoadArticleList(type){
 			t.append('<div id="section_tab" onclick="TabClicked({1})"> {0} </div>'.format([articles[i].article_type,i.toString()]));
 		}
 		
-		var a1 = $('.article_abstract_1').clone();
-		var a2 = $('.article_abstract_2').clone();
+		if(ArticleElements.loaded==false){
+			ArticleElements.a1 = $('#article_abs_1').clone();
+			ArticleElements.a2 = $('#article_abs_2').clone();
+			ArticleElements.loaded = true;
+		}
+		
 		//Create Sections		
 		t = $('#variable_height');
 		
@@ -92,9 +109,9 @@ function LoadArticleList(type){
 			
 				var el ;
 				if( k%2==0){
-					el =  a1.clone();
+					el =  ArticleElements.a1.clone();
 				}else{
-					el =  a2.clone();
+					el =  ArticleElements.a2.clone();
 				}
 				
 				el.find('.article_abstract_title').empty().append(article_list[j].article_title);
@@ -124,11 +141,15 @@ function LoadDiscussionsList(type){
 		var t = $('#section_tabs');
 		t.empty();
 		for ( var i = articles.length-1 ; i >=0  ; i--){
-			t.append('<div id="section_tab" onclick="TabClicked({1})"> {0} </div>'.format([articles[i].article_type,i.toString()]));
+			t.append('<div id="section_tab" onclick="TabClicked({1})"> {0} </div>'.format([articles[i].article_type[0],i.toString()]));
 		}
 		
-		var a1 = $('.article_abstract_1').clone();
-		var a2 = $('.article_abstract_2').clone();
+		if(ArticleElements.loaded==false){
+			ArticleElements.a1 = $('#article_abs_1').clone();
+			ArticleElements.a2 = $('#article_abs_2').clone();
+			ArticleElements.a3 = $('#article_abs_about').clone();
+			ArticleElements.loaded=true;
+		}
 		//Create Sections		
 		t = $('#variable_height');
 		
@@ -136,17 +157,21 @@ function LoadDiscussionsList(type){
 		t.append('<div id="spacer" style="height:20px"></div>');
 		
 		var k = 0;
-		for ( var i = 0 ; i < articles.length ; i++){
-		
+		//for ( var i = 0 ; i < articles.length ; i++){
+			var i = TabId;
+			console.log(i)
+			var eh = ArticleElements.a3.clone();
+			eh.find('#discuss_abstract_text').empty().append(articles[i].article_type[1]);
+			eh.appendTo(t);
 			var article_list = articles[i].article_list;
 			articles[i].start = k;
 			for ( var j=0;j < article_list.length;j++){
 			
 				var el ;
 				if( k%2==0){
-					el =  a1.clone();
+					el =  ArticleElements.a1.clone();
 				}else{
-					el =  a2.clone();
+					el =  ArticleElements.a2.clone();
 				}
 				
 				el.find('.discuss_abstract_title').empty().append(article_list[j].article_title);
@@ -158,7 +183,7 @@ function LoadDiscussionsList(type){
 				
 				k = k + 1;
 			}
-		}
+		//}
 		
 		t.append('<div id="spacer" style="height:220px"></div>');
 		$('#variable_height').css('width',$( document ).width()-10) ;
@@ -178,16 +203,19 @@ function LoadArticle(name){
 			
 		$('#article_title').empty().append(article.article_title);
 		$('#article_text_text').empty().append(article.article);
+
 		
-		$('#article_author_text').empty().append(article.about_author);	
-        
-		var url='url(../../home/main/authors/'+ article.author_pic + ')';
-		url = encodeURIComponent(url.trim()) 
-		console.log(url)
-		$('#author_image').css('background-image', url);					
-		console.log($('#author_image').css('background-image'))
-		$('#fbcommentplugin').empty().append('<div class="fb-comments" data-href="http://simaiisc.org/home/main/main_article_{0}.html" data-width="650" data-numposts="5"></div>'.format([article.article_title]));
-	
+		if(patt.test(name)==false){		
+			$('#article_author_text').empty().append(article.about_author);	
+			
+			var url='url(../../home/main/authors/'+ article.author_pic + ')';
+			url = encodeURIComponent(url.trim()) 
+			console.log(url)
+			$('#author_image').css('background-image', url);					
+			console.log($('#author_image').css('background-image'))
+			$('#fbcommentplugin').empty().append('<div class="fb-comments" data-href="http://simaiisc.org/home/main/main_article_{0}.html" data-width="650" data-numposts="5"></div>'.format([article.article_title]));
+		}
+		
 		if(patt.test(name)){
 			console.log('Fetching galleries');
 			jQuery.getJSON('../../static/pics/galleries/'+ article.galleries + '/gallery.json',function(data){
@@ -249,19 +277,29 @@ function MemberSearch(field){
 	
 	var patt = new RegExp(company, "i");
 	
+	var field_list;
+	if(field == -1){
+			field_list = [0,1,2];
+	}else{
+			field_list = [field];
+	}
+	
 	for(var i = 0 ; i < MemberData.list.length ; i++){
 	    var m;		
 		jQuery.getJSON('../../home/main/members/' + MemberData.list[i] + '.json',function(data){
 			     for(var j = 0;j<data.members.length;j++){
-					if(patt.test(data.members[j][field])){
-						list.push(data.members[j]);
+					for(var k = 0 ; k < field_list.length ; k++){
+						if(patt.test(data.members[j][field_list[k]])){
+							list.push(data.members[j]);
+							break;
+						}
 					}
 				 }				 
 			   MemberData.FileCount=MemberData.FileCount-1;
 				if(MemberData.FileCount==0){		
 			     console.log("Search Complete...");
 				 SetMemberList(list);
-				 $('#Company').empty().append(company);
+				 $('#Company').empty().append('');
 			   }
 		});
 

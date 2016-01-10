@@ -29,17 +29,25 @@ function GalleryHitCheck(x,y){
 function SwitchToSmallGallery(){
 	console.log('Switching Gallery');
 	var x = 0;
-	if($(window).width() > 1366) x = 400;
-	zoom = ($(window).width()-100-x)/1024;
+	if($(window).width() > 900) x = 200; //have padding (min 200)
+	
+	var min_pv = 50;
+	zoom = ($(window).width()-x)/$('#SG0').width();
+	if(($('#SG0').height()*zoom + min_pv*2) > $(window).height()){
+		zoom= ($(window).height() - min_pv*2)/$('#SG0').height();
+	}
+	
 	if(1){
 		var w = $('#SG0').width()*zoom;
 		var h = $('#SG0').height()*zoom;
-		$('#GalleryView').height(h+200);
 		
-		var pl = ($(window).width()-w-100)/2;
+		
+		$('#GalleryView').height(h+min_pv*2);
+		
+		var pl = ($(window).width()-w)/2;
 		var pt = ($('#GalleryView').height()-h)/2;
 		
-		console.log($('#Gallery').width())
+		console.log(pl)
 		
 		$('#Gallery').css({'padding-left':pl}).css({'padding-top':pt});
 		
