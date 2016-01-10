@@ -9,21 +9,18 @@
 
 <div id="container">
 	
-  <div style="min-height:900px;background:rgb(255,246,89);background-image: url('../../static/pics/main/bg.jpg')">	  
+  <div style="min-height:1024px;background:rgb(255,246,89);background-image: url('../../static/pics/main/bg.jpg')">	  
   
-		<div id="spacer" style="height:120px;background:rgba(127,127,127,0.5)"></div>
+		<div id="top_bar" style="position:relative;height:120px;background:rgba(127,127,127,0.5)">
+			<ul id="top_bar_header" style="padding-top:10px;color:#fff;padding-left:450px">
+				<li style="float:left;margin-left:20px;width:100px" ><div id="SIMALogo" onclick="location.href='../../home/main/main.html'"></div></li>
+				<li style="float:left;margin-left:20px;line-height:100px;height:100px;"> <font face="HeaderFont" size="4"> <font size="12"><b>S</b></font>CIENCE <font size="12"><b>I</b></font>NSTITUTE <font size="12"><b>M</b></font>ALAYALI <font size="12"><b>A</b></font>SSOCIATION </font></li>
+			</ul>
+		</div>
 		
 		<div id="content">		
-		
-			<div id="top_bar" style="position:relative;height:120px;">
-				<ul style="padding-top:10px">
-					<li style="float:left;margin-left:20px;width:100px" ><div id="SIMALogo"></div></li>
-					<li style="float:left;margin-left:20px;line-height:100px;height:100px"> <font face="HeaderFont" size="4"> <font size="12"><b>S</b></font>CIENCE <font size="12"><b>I</b></font>NSTITUTE <font size="12"><b>M</b></font>ALAYALI <font size="12"><b>A</b></font>SSOCIATION </font></li>
-				</ul>
-			</div>
 			
-			
-			<div id="spacer" style="height:10px"></div>
+			<div id="spacer" style="height:130px"></div>
 			
 			<div id="SIMA_MainCarousel" style="width:768px;height:275px;overflow:hidden" >					
 					<div style="position:relative;width:768px;height:275px;float:left"><canvas id="my-canvas"> </canvas></div>
@@ -37,11 +34,11 @@
 			<!--div id="section_tab" style="" onclick="RunCarousel()"> Change </div-->	
 			<div style="">
 				<div style="position:relative;float:left;">			
-					<div class="main_tab" style="" onclick="window.location.href = '../../home/main/main_about.html'"> ABOUT US </div>
-					<div class="main_tab" style="" onclick="window.sessionStorage.setItem('GalleryToLoad','nogallery');window.location.href = '../../home/main/main_gallery.html'"> ARCHIVES </div>
-					<div class="main_tab" style="" onclick="window.location.href = '../../home/main/main_article_list.html'"> ACTIVITIES </div>
-					<div class="main_tab" style="" onclick="window.location.href = '../../home/main/main_discussions_list.html'"> EZHUTHUPETTI</div>
-					<div class="main_tab" style="" onclick="window.location.href = '../../home/main/main_member_list.html'"> MEMBERS </div>				
+					<div class="main_tab" style="" onclick="footer_nav('main_about',-1)"> ABOUT US </div>
+					<div class="main_tab" style="" onclick="window.sessionStorage.setItem('GalleryToLoad','nogallery');footer_nav('main_gallery',-1)"> ARCHIVES </div>
+					<div class="main_tab" style="" onclick="footer_nav('main_article_list',0)"> ACTIVITIES </div>
+					<div class="main_tab" style="" onclick="footer_nav('main_discussions_list',0)"> ARTICLES</div>
+					<div class="main_tab" style="" onclick="footer_nav('main_member_list',-1)"> MEMBERS </div>				
 				</div>
 				<div id="UpcomingContainer" style="position:relative;float:left;margin-left:20px">
 					<div style="text-align:center;font-family:TestFont;font-size:xx-large;margin-top:10px;color:rgb(80,80,80)">
@@ -86,6 +83,38 @@
 				<p>Alternative text - include a link <a href="myfile.pdf">to the PDF!</a></p>
 			</object-->
 			<div id="spacer" style="height:100px"></div>
+
+			<div id="footer" style="border-top: 1px solid #000000;">				
+				<div style="height:30px"></div>
+				<div class="footer_box">
+					<div class="footer_main" style="" onclick="footer_nav('main_about',-1)"> ABOUT US </div>
+					<div class="footer_main" style="" onclick="window.sessionStorage.setItem('GalleryToLoad','nogallery');footer_nav('main_gallery',-1)"> ARCHIVES </div>
+					<div class="footer_main" style="" onclick="footer_nav('main_member_list',-1)"> MEMBERS </div>
+				</div>
+				<div class="footer_box">
+					<div class="footer_main" style="" onclick="footer_nav('main_article_list',0)"> ACTIVITIES </div>
+					<div class="footer_sub" style="" onclick="footer_nav('main_article_list',0)"> CULTURAL </div>
+					<div class="footer_sub" style="" onclick="footer_nav('main_article_list',1)"> SPORTS </div>
+					<div class="footer_sub" style="" onclick="footer_nav('main_article_list',2)"> CELEBRATIONS </div>
+					<div class="footer_sub" style="" onclick="footer_nav('main_article_list',3)"> GET-TOGETHERS </div>
+					<div class="footer_sub" style="" onclick="footer_nav('main_article_list',4)"> INITIATIVES </div>
+				</div>
+				<div class="footer_box">
+					<div class="footer_main" style="" onclick="footer_nav('main_discussions_list',0)"> ACTIVITIES </div>
+					<div class="footer_sub" style="" onclick="footer_nav('main_discussions_list',0)"> RESEARCH HIGHLITES </div>
+					<div class="footer_sub" style="" onclick="footer_nav('main_discussions_list',1)"> OPEN PAGES </div>
+					<div class="footer_sub" style="" onclick="footer_nav('main_discussions_list',2)"> INTERVIEWS </div>
+				</div>
+				<div class="footer_box">
+					<div class="footer_main">
+						<p><b>CONTACT US</b></p>
+						<p>Secretary, SIMA</p>
+						<p>IISc Bangalore</p>
+						<p>secretary.sima.iisc@gmail.com</p>
+					</div>
+				</div>
+			</div>
+			
 			
 		</div>
   </div>
@@ -93,4 +122,7 @@
 </div>
 
 <script src="../../static/scripts/sima_carousel.js"></script>
+<script type="text/javascript">
+setup_header_footer();
+</script> 
 </body></html>

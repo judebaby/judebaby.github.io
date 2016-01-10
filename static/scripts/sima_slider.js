@@ -179,11 +179,14 @@ function SIMASliderSelectRoll(dir){
 
 //slide function
 function slide(where){	
+	//console.log('Runn')
 	SIMASliderRun(1);	
 	
+/*
 	SIMASlider.temp++;
 	if(SIMASlider.temp==5){
 		SIMASlider.temp=0;
 		SIMASliderSelectRoll(SwitchGallery(-1));
-	}    
+	}
+*/    
 }

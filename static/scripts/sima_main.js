@@ -338,3 +338,92 @@ function LoadMembers(year){
     UpdateMemberData(MemberData.list[0]);
  });  
 }
+
+var lastScroll=0;
+var isSliding=false;
+
+function setup_header_footer(){
+	var pl = ($(window).width() - 768)/2 - 110;
+	pl = pl < 0 ? 0 : pl;
+	$('#top_bar_header').css('padding-left',pl);
+	
+
+$("#variable_height").scroll(function() {
+	var x = $(this).scrollTop();
+	//console.log([x,lastScroll])
+	if((x - lastScroll) > 50){
+		if(isSliding==false){
+			isSliding=true;
+			//console.log("UP");			
+			$('#top_bar').stop().slideUp("slow");
+			$('#spacer_top').stop().slideUp("slow",function(){
+				//$('#section_header_top').stop().slideUp("slow");	
+				isSliding=false;				
+			});
+			$('#section_title').stop().slideUp("slow",function(){});
+		}
+	}else{
+		if(isSliding==false){
+			isSliding=true;
+			//console.log("DOWN");
+			$('#top_bar').stop().slideDown("slow");
+			$('#spacer_top').stop().slideDown("slow",function(){isSliding=false;});
+		//$('#section_header_top').stop().slideUp("slow");
+			$('#section_title').stop().slideDown("slow");
+		}	
+	}
+    lastScroll = x;
+});
+
+//Add footer
+//console.log($('#content').height())
+$('#content').append(get_footer_string());
+
+//Navigate to section
+ var section = window.sessionStorage.getItem('SectionToLoad');
+ if( typeof(section) != "undefined"){
+	if(section != -1) TabClicked(section);
+ }
+ 
+}
+
+function footer_nav(page,section){
+	console.log([page,section]);
+	window.sessionStorage.setItem('SectionToLoad',section);
+	window.location.href = '../../home/main/' + page + '.html';
+}
+
+function get_footer_string(){
+			var s = '';
+			s = s + '<div id="footer" style="margin-top:30px;border-top: 1px solid #000000;">				';
+			s = s + '	<div style="height:30px"></div>';
+			s = s + '	<div class="footer_box">';
+			s = s + '		<div class="footer_main" style="" onclick="footer_nav(\'main_about\',-1)"> ABOUT US </div>';
+			s = s + '		<div class="footer_main" style="" onclick="footer_nav(\'main_gallery\',-1)"> ARCHIVES </div>';
+			s = s + '		<div class="footer_main" style="" onclick="footer_nav(\'main_member_list\',-1)"> MEMBERS </div>';
+			s = s + '	</div>';
+			s = s + '	<div class="footer_box">';
+			s = s + '		<div class="footer_main" style="" onclick="footer_nav(\'main_article_list\',0)"> ACTIVITIES </div>';
+			s = s + '		<div class="footer_sub" style="" onclick="footer_nav(\'main_article_list\',0)"> CULTURAL </div>';
+			s = s + '		<div class="footer_sub" style="" onclick="footer_nav(\'main_article_list\',1)"> SPORTS </div>';
+			s = s + '		<div class="footer_sub" style="" onclick="footer_nav(\'main_article_list\',2)"> CELEBRATIONS </div>';
+			s = s + '		<div class="footer_sub" style="" onclick="footer_nav(\'main_article_list\',3)"> GET-TOGETHERS </div>';
+			s = s + '		<div class="footer_sub" style="" onclick="footer_nav(\'main_article_list\',4)"> INITIATIVES </div>';
+			s = s + '	</div>';
+			s = s + '	<div class="footer_box">';
+			s = s + '		<div class="footer_main" style="" onclick="footer_nav(\'main_discussions_list\',0)"> ACTIVITIES </div>';
+			s = s + '		<div class="footer_sub" style="" onclick="footer_nav(\'main_discussions_list\',0)"> RESEARCH HIGHLITES </div>';
+			s = s + '		<div class="footer_sub" style="" onclick="footer_nav(\'main_discussions_list\',1)"> OPEN PAGES </div>';
+			s = s + '		<div class="footer_sub" style="" onclick="footer_nav(\'main_discussions_list\',2)"> INTERVIEWS </div>';
+			s = s + '	</div>';
+			s = s + '	<div class="footer_box">';
+			s = s + '		<div class="footer_main">';
+			s = s + '			<p><b>CONTACT US</b></p>';
+			s = s + '			<p>Secretary, SIMA</p>';
+			s = s + '			<p>IISc Bangalore</p>';
+			s = s + '			<p>secretary.sima.iisc@gmail.com</p>';
+			s = s + '		</div>';
+			s = s + '	</div>';
+			s = s + '</div>';
+			return s;
+}

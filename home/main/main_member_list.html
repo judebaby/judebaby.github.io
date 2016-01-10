@@ -13,19 +13,17 @@
 	
   <div style="min-height:1024px;background:rgb(255,246,89);background-image: url('../../static/pics/main/bg.jpg')">	  
   
-		<div id="spacer_top" style="height:120px;background:rgba(127,127,127,0.5)"></div>
+		<div id="top_bar" style="position:relative;height:120px;background:rgba(127,127,127,0.5)">
+			<ul id="top_bar_header" style="padding-top:10px;color:#fff;padding-left:450px">
+				<li style="float:left;margin-left:20px;width:100px" ><div id="SIMALogo" onclick="location.href='../../home/main/main.html'"></div></li>
+				<li style="float:left;margin-left:20px;line-height:100px;height:100px;"> <font face="HeaderFont" size="4"> <font size="12"><b>S</b></font>CIENCE <font size="12"><b>I</b></font>NSTITUTE <font size="12"><b>M</b></font>ALAYALI <font size="12"><b>A</b></font>SSOCIATION </font></li>
+			</ul>
+		</div>
 		
-		<div id="content" style="position:absolute" >		
-		
-			<div id="top_bar" style="position:relative;height:120px;">
-				<ul style="padding-top:10px">
-					<li style="float:left;margin-left:20px;width:100px" ><div id="SIMALogo" onclick="location.href='../../home/main/main.html'"></div></li>
-					<li style="float:left;margin-left:20px;line-height:100px;height:100px"> <font face="HeaderFont" size="4"> <font size="12"><b>S</b></font>CIENCE <font size="12"><b>I</b></font>NSTITUTE <font size="12"><b>M</b></font>ALAYALI <font size="12"><b>A</b></font>SSOCIATION </font></li>
-				</ul>
-			</div>
+		<div id="content" style="" >		
+
 			
-			
-			<div id="spacer" style="height:20px"></div>
+			<div id="spacer" style="height:140px"></div>
 			
 			<div id="section_header" style="padding-left:20px ;">	
 				
@@ -52,7 +50,7 @@
 			  <div id="Company"  tabindex="1" style="line-height:40px;float:right;width:200px;height:40px;border:thin solid #000000;text-align:center;font-family:TitleFont;font-size:large;" contenteditable>search-term</div>			  			  
 			</div>
 			
-			<div id="variable_height" style="position:absolute;margin-top:40px;" >
+			<div id="variable_height" style="" >
 					
 			<div id="spacer" style="height:20px"></div>
 			 
@@ -84,6 +82,9 @@
 			<div id="spacer" style="height:20px"></div>	
 			
 			</div>
+			
+			
+			
 		</div>
   </div>
  
@@ -93,30 +94,7 @@
 
 var articles=[];
 //LoadArticleList();
-var lastScroll=0;
-var isSliding=false;
-$("#variable_height").scroll(function() {
-	var x = $(this).scrollTop();
-	if((x - lastScroll) > 50){
-		if(isSliding==false){
-			isSliding=true;
-			$('#top_bar').stop().slideUp("slow");
-			$('#spacer_top').stop().slideUp("slow",function(){
-				//$('#section_header_top').stop().slideUp("slow");
-				$('#section_title').stop().slideUp("slow",function(){isSliding=false;});				
-			});
-		}
-	}else{
-		if(isSliding==false){
-			isSliding=true;
-			$('#top_bar').stop().slideDown("slow");
-			$('#spacer_top').stop().slideDown("slow");
-		//$('#section_header_top').stop().slideUp("slow");
-			$('#section_title').stop().slideDown("slow",function(){isSliding=false;});
-		}	
-	}
-    lastScroll = x;
-});
+
 
 $('#Company').bind('keydown', function(event) {
 	if(event.keyCode==13){
@@ -137,5 +115,7 @@ $('#Company').bind('keydown', function(event) {
   });
   LoadMembers("2015");
 </script> 
-
+<script type="text/javascript">
+setup_header_footer();
+</script> 
 </body></html>

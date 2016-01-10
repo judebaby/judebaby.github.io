@@ -15,7 +15,7 @@
     
          
     var t = 0;
-	var nt = 50;
+	var nt = 25;
     var current_order = 0;
 	var current_l_image = 0;
 	var aCarouselDir = -1;
@@ -68,7 +68,7 @@
 		CarouselConfig.carousel_height = 275;
 		CarouselConfig.main_img_width  = 456;
 		//Config = [zoom,xloc,opacity,filter_opacity,shadow_strength]
-		CarouselConfig.config = [[0.5,0,0,0.9,0],[0.7,0,1,0.7,0],[0.89,61,1,0.4,0],[0.95,154,1,0,1],[0.89,296,1,0.4,0],[0.7,451,1,0.7,0],[0.5,451,0,0.9,0]];
+		CarouselConfig.config = [[0.5,0,0,0.9,0],[0.7,-3,1,0.7,0],[0.89,61,1,0.4,0],[0.95,154,1,0,1],[0.89,296,1,0.4,0],[0.7,451,1,0.7,0],[0.5,451,0,0.9,0]];
 		
 		
 		CarouselConfig.carousel_height = CarouselConfig.carousel_height*zoom;
@@ -184,7 +184,7 @@
 		
 		sima_carousel_context.globalAlpha = 1;
 		sima_carousel_context.shadowBlur=0;
-		sima_carousel_context.fillStyle = 'rgba(0,0,0,{0})'.format([filter.toString()]);
+		sima_carousel_context.fillStyle = 'rgba(128,128,128,{0})'.format([filter.toString()]);
 		sima_carousel_context.fillRect(xloc,yloc,width,height);	
 		
 	}

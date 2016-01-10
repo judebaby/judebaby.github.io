@@ -4,7 +4,6 @@
 	<link href="../../static/css/sima_style.css" rel="stylesheet" type="text/css" />
 	<script language="javascript" type="text/javascript" src="../../static/scripts/sima_main.js"></script>
 	<script language="javascript" type="text/javascript" src="../../static/scripts/jquery.js"></script>
-	<script src="../../static/scripts/jquery.cycle2.min.js"></script>
 </head>
 <body>
 
@@ -13,19 +12,18 @@
 	
   <div style="min-height:1024px;background:rgb(255,246,89);background-image: url('../../static/pics/main/bg.jpg')">	  
   
-		<div id="spacer_top" style="height:120px;background:rgba(127,127,127,0.5)"></div>
+		<div id="top_bar" style="position:relative;height:120px;background:rgba(127,127,127,0.5)">
+			<ul id="top_bar_header" style="padding-top:10px;color:#fff;padding-left:450px">
+				<li style="float:left;margin-left:20px;width:100px" ><div id="SIMALogo" onclick="location.href='../../home/main/main.html'"></div></li>
+				<li style="float:left;margin-left:20px;line-height:100px;height:100px;"> <font face="HeaderFont" size="4"> <font size="12"><b>S</b></font>CIENCE <font size="12"><b>I</b></font>NSTITUTE <font size="12"><b>M</b></font>ALAYALI <font size="12"><b>A</b></font>SSOCIATION </font></li>
+			</ul>
+		</div>
 		
 		<div id="content" style="position:absolute" >		
 		
-			<div id="top_bar" style="position:relative;height:120px;">
-				<ul style="padding-top:10px">
-					<li style="float:left;margin-left:20px;width:100px" ><div id="SIMALogo" onclick="location.href='../../home/main/main.html'"></div></li>
-					<li style="float:left;margin-left:20px;line-height:100px;height:100px"> <font face="HeaderFont" size="4"> <font size="12"><b>S</b></font>CIENCE <font size="12"><b>I</b></font>NSTITUTE <font size="12"><b>M</b></font>ALAYALI <font size="12"><b>A</b></font>SSOCIATION </font></li>
-				</ul>
-			</div>
+
 			
-			
-			<div id="spacer" style="height:20px"></div>
+			<div id="spacer_top" style="height:140px"></div>
 			
 			<div id="section_header" style="padding-left:20px ;">	
 				
@@ -49,60 +47,61 @@
 			
 			<div id="spacer" style="height:15px"></div>			
 			
-			<div id="variable_height" style="position:absolute;margin-top:40px;" >
+			<div id="variable_height" style="" >
 					
-			<div id="spacer" style="height:20px"></div>
-			 
+				<div id="spacer" style="height:20px"></div>
+				 
 
-			
-			<div id="article_abs_1" class="article_abstract_1"  onclick="location.href='./main_article.html';">
-				<div style="float:left ;">
-					<div id="article_abstract_image" style="background-image: url(../../home/main/articles/christmas.jpg)">
+				
+				<div id="article_abs_1" class="article_abstract_1"  onclick="location.href='./main_article.html';">
+					<div style="float:left ;">
+						<div id="article_abstract_image" style="background-image: url(../../home/main/articles/christmas.jpg)">
+						</div>
 					</div>
-				</div>
-				<div style="float:left ; width:460px ; padding-left:10px">
-					<div >					
-						<div class="article_abstract_title">
-							Christmas
-						</div>
-					</div>					
-					<div id="spacer" style="height:10px"></div>
-					<div>					
-						<div id="article_abstract_text">
-							Christmas or Christmas Day is an annual festival commemorating the birth of Jesus Christ,observed most commonly on December 25 as a religious and cultural celebration among billions of people around the world.
-						</div>
-					</div>				
-				</div>	
-			</div>		
+					<div style="float:left ; width:460px ; padding-left:10px">
+						<div >					
+							<div class="article_abstract_title">
+								Christmas
+							</div>
+						</div>					
+						<div id="spacer" style="height:10px"></div>
+						<div>					
+							<div id="article_abstract_text">
+								Christmas or Christmas Day is an annual festival commemorating the birth of Jesus Christ,observed most commonly on December 25 as a religious and cultural celebration among billions of people around the world.
+							</div>
+						</div>				
+					</div>	
+				</div>		
+				
 			
+				<div id="article_abs_2" class="article_abstract_2"  onclick="location.href='./main_article.html';">
+					
+					<div style="float:left ; width:460px ; padding-left:10px">
+						<div >					
+							<div class="article_abstract_title" style="text-align:right">
+								Iftaar
+							</div>
+						</div>					
+						<div id="spacer" style="height:10px"></div>
+						<div>					
+							<div id="article_abstract_text">
+								Iftaar is one of the religious observances of Ramadan and is often done as a community, with people gathering to break their fast together. Iftar is taken right after Maghrib time, which is around sunset. 
+							</div>
+						</div>				
+					</div>	
+					<div style="float:left ;">
+						<div id="article_abstract_image" style="background-image: url(../../home/main/articles/ifftaar.jpg)">
+						</div>
+					</div>
+					
+				</div>
+
+				
+				
+				<div id="spacer" style="height:20px"></div>			
+			
+			</div>			
 		
-			<div id="article_abs_2" class="article_abstract_2"  onclick="location.href='./main_article.html';">
-				
-				<div style="float:left ; width:460px ; padding-left:10px">
-					<div >					
-						<div class="article_abstract_title" style="text-align:right">
-							Iftaar
-						</div>
-					</div>					
-					<div id="spacer" style="height:10px"></div>
-					<div>					
-						<div id="article_abstract_text">
-							Iftaar is one of the religious observances of Ramadan and is often done as a community, with people gathering to break their fast together. Iftar is taken right after Maghrib time, which is around sunset. 
-						</div>
-					</div>				
-				</div>	
-				<div style="float:left ;">
-					<div id="article_abstract_image" style="background-image: url(../../home/main/articles/ifftaar.jpg)">
-					</div>
-				</div>
-				
-			</div>
-
-			
-			
-			<div id="spacer" style="height:20px"></div>	
-			
-			</div>
 		</div>
   </div>
  
@@ -112,35 +111,13 @@
 
 var articles=[];
 LoadArticleList('articles');
-var lastScroll=0;
-var isSliding=false;
-$("#variable_height").scroll(function() {
-	var x = $(this).scrollTop();
-	if((x - lastScroll) > 50){
-		if(isSliding==false){
-			isSliding=true;
-			$('#top_bar').stop().slideUp("slow");
-			$('#spacer_top').stop().slideUp("slow",function(){
-				//$('#section_header_top').stop().slideUp("slow");
-				$('#section_title').stop().slideUp("slow",function(){isSliding=false;});				
-			});
-		}
-	}else{
-		if(isSliding==false){
-			isSliding=true;
-			$('#top_bar').stop().slideDown("slow");
-			$('#spacer_top').stop().slideDown("slow");
-		//$('#section_header_top').stop().slideUp("slow");
-			$('#section_title').stop().slideDown("slow",function(){isSliding=false;});
-		}	
-	}
-    lastScroll = x;
-});
 </script> 
 <script type="text/javascript">
   $(document).ready(function() {
 		$('#variable_height').css('width',$( document ).width()-10) ;
   });
 </script> 
-
+<script type="text/javascript">
+setup_header_footer();
+</script> 
 </body></html>
