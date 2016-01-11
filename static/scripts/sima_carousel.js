@@ -15,7 +15,7 @@
     
          
     var t = 0;
-	var nt = 25;
+	var nt = 35;
     var current_order = 0;
 	var current_l_image = 0;
 	var aCarouselDir = -1;
@@ -67,8 +67,8 @@
 		
 		CarouselConfig.carousel_height = 275;
 		CarouselConfig.main_img_width  = 456;
-		//Config = [zoom,xloc,opacity,filter_opacity,shadow_strength]
-		CarouselConfig.config = [[0.5,0,0,0.9,0],[0.7,-3,1,0.7,0],[0.89,61,1,0.4,0],[0.95,154,1,0,1],[0.89,296,1,0.4,0],[0.7,451,1,0.7,0],[0.5,451,0,0.9,0]];
+		//Config = [zoom,xloc,opacity,shadow_strength,filter_opacity]
+		CarouselConfig.config = [[0.5,0,0,0,[127,127,127,0.9]],[0.7,-3,1,0,[158,29,90,0.7]],[0.89,61,1,0,[190,190,0,0.6]],[0.95,160,1,1,[127,127,127,0]],[0.89,296,1,0,[0,127,64,0.4]],[0.7,451,1,0,[121,66,111,0.7]],[0.5,451,0,0,[127,127,127,0.9]]];
 		
 		
 		CarouselConfig.carousel_height = CarouselConfig.carousel_height*zoom;
@@ -83,6 +83,13 @@
 	    CarouselConfig.DrawOrder = [[0,1,5,2,4,3],[5,0,4,1,3,2],[0,1,5,2,4,3]];
 		current_order = 0;
 		
+		CarouselConfig.tween = [];
+		for(var i = 0 ; i < nt + 1 ; i++){
+			var x = ((i/(nt)) - 0.5)*12;
+			CarouselConfig.tween[i] = 1/(1+Math.exp(-x));
+			
+		}
+		console.log(CarouselConfig.tween)
 		//Load Image List
 		jQuery.getJSON('../../static/pics/main/bglist.json',function(data){
 			bglist = data.background_images;
@@ -163,11 +170,20 @@
 	
 	function DrawImageOnCanvas(image,config_id_s,config_id_e,l){
 	    //console.log([image_id,config_id_s,config_id_e,l])
-		var zoom   = CarouselConfig.config[config_id_s][0] + (CarouselConfig.config[config_id_e][0]-CarouselConfig.config[config_id_s][0])*l;
-		var xloc   = CarouselConfig.config[config_id_s][1] + (CarouselConfig.config[config_id_e][1]-CarouselConfig.config[config_id_s][1])*l;
-		var alpha  = CarouselConfig.config[config_id_s][2] + (CarouselConfig.config[config_id_e][2]-CarouselConfig.config[config_id_s][2])*l;
-		var filter = CarouselConfig.config[config_id_s][3] + (CarouselConfig.config[config_id_e][3]-CarouselConfig.config[config_id_s][3])*l;
-		var shadow = CarouselConfig.config[config_id_s][4] + (CarouselConfig.config[config_id_e][4]-CarouselConfig.config[config_id_s][4])*l;
+		
+		var tweened_val = [0,0,0,0,[0,0,0,0]];
+		
+		for(var i = 0 ; i < 4 ; i++){
+			tweened_val[i] = CarouselConfig.config[config_id_s][i] + (CarouselConfig.config[config_id_e][i]-CarouselConfig.config[config_id_s][i])*l;
+		}
+		for(var i = 0 ; i < 4 ; i++){
+			tweened_val[4][i] = CarouselConfig.config[config_id_s][4][i] + (CarouselConfig.config[config_id_e][4][i]-CarouselConfig.config[config_id_s][4][i])*l;
+		}
+		var zoom   = tweened_val[0];
+		var xloc   = tweened_val[1];
+		var alpha  = tweened_val[2];		
+		var shadow = tweened_val[3];		
+		var filter = tweened_val[4];
 		
 		var yloc = CarouselConfig.carousel_height*(1-zoom)*0.5;
 		var height = CarouselConfig.carousel_height*zoom;
@@ -184,7 +200,10 @@
 		
 		sima_carousel_context.globalAlpha = 1;
 		sima_carousel_context.shadowBlur=0;
-		sima_carousel_context.fillStyle = 'rgba(128,128,128,{0})'.format([filter.toString()]);
+		//sima_carousel_context.fillStyle = 'rgba({0},{1},{2},{3})'.format([filter[0].toString(),filter[1].toString(),filter[2].toString(),filter[3].toString()]);
+		//console.log(filter)
+		for(var i=0;i<3;i++) filter[i] = Math.floor(filter[i]);
+		sima_carousel_context.fillStyle = 'rgba({0},{1},{2},{3})'.format([filter[0].toString(),filter[1].toString(),filter[2].toString(),filter[3].toString()]);
 		sima_carousel_context.fillRect(xloc,yloc,width,height);	
 		
 	}
@@ -197,7 +216,7 @@
 	}
 	function DrawImages(CarouselDir){
 		sima_carousel_context.clearRect(0, 0, sima_carousel_context.canvas.width,sima_carousel_context.canvas.height);
-		var l = t/nt;
+		var l =CarouselConfig.tween[t];// t/nt;
 	
 		for(var i=0;i<CarouselConfig.config.length-1;i++){
 		  var j = CarouselConfig.DrawOrder[current_order][i];
