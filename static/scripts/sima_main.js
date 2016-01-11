@@ -74,7 +74,16 @@ function ArticleClicked(id){
 	}
 }
 
-
+function GoToPage(type,title){
+	if(type=='articles'){
+		window.sessionStorage.setItem("ArticleToLoad",type + '/'+title);
+		window.location.href = "./main_article.html";
+	}
+	if(type=='discussions'){
+		window.sessionStorage.setItem("ArticleToLoad",type + '/'+title);
+		window.location.href = "./main_discussions.html";
+	}
+}
 
 function LoadArticleList(type){
 	article_type=type;
@@ -115,7 +124,11 @@ function LoadArticleList(type){
 				}
 				
 				el.find('.article_abstract_title').empty().append(article_list[j].article_title);
-				el.find('#article_abstract_image').css('background-image', 'url(../../home/main/'+ article_type + '/{0})'.format([article_list[j].article_image]));
+				
+				var url= 'url(../../home/main/'+ article_type + '/{0})'.format([article_list[j].article_image]);
+				url = encodeURIComponent(url.trim()) 			
+				el.find('#article_abstract_image').css('background-image',url);				
+			
 				el.find('#article_abstract_text').empty().append(article_list[j].article_abstract);
 				el.attr("id","article_abs_"+k.toString());
 				el.attr("onclick","ArticleClicked({0})".format([k.toString()]));
@@ -126,8 +139,8 @@ function LoadArticleList(type){
 		}
 		
 		t.append('<div id="spacer" style="height:220px"></div>');
-		$('#variable_height').css('width',$( document ).width()-10) ;
-		$('#variable_height').css('height',$( document ).height()-200) ;
+		//$('#variable_height').css('width',$( window ).width()-10) ;
+		$('#variable_height').css('height',$( window ).height()-200) ;
 		
 		//Navigate to section
 		 var section = window.sessionStorage.getItem('SectionToLoad');
@@ -161,7 +174,7 @@ function LoadDiscussionsList(type){
 		t = $('#variable_height');
 		
 		t.empty();
-		t.append('<div id="spacer" style="height:20px"></div>');
+		t.append('<div id="spacer" style="height:20px;"></div>');
 		
 		var k = 0;
 		//for ( var i = 0 ; i < articles.length ; i++){
@@ -182,7 +195,10 @@ function LoadDiscussionsList(type){
 				}
 				
 				el.find('.discuss_abstract_title').empty().append(article_list[j].article_title);
-				el.find('#article_abstract_image').css('background-image', 'url(../../home/main/'+ article_type + '/{0})'.format([article_list[j].article_image]));
+				
+				var url= 'url(../../home/main/'+ article_type + '/{0})'.format([article_list[j].article_image]);
+				url = encodeURIComponent(url.trim()) 			
+				el.find('#article_abstract_image').css('background-image',url);
 				el.find('#discuss_abstract_text').empty().append(article_list[j].article_abstract);
 				el.attr("id","article_abs_"+k.toString());
 				el.attr("onclick","ArticleClicked({0})".format([k.toString()]));
@@ -192,20 +208,9 @@ function LoadDiscussionsList(type){
 			}
 		//}
 		
-		t.append('<div id="spacer" style="height:220px"></div>');
-		$('#variable_height').css('width',$( document ).width()-10) ;
-		$('#variable_height').css('height',$( document ).height()-200) ;
-		
-		/*
-		//Navigate to section
-		 var section = window.sessionStorage.getItem('SectionToLoad');
-		 if( typeof(section) != "undefined"){
-			if(section != -1) {
-				window.sessionStorage.getItem('SectionToLoad',-1);
-				TabClicked(section);				
-				}
-		 }
-		 */
+		t.append('<div id="spacer" style="height:220px;"></div>');
+		//$('#variable_height').css('width',$( window ).width()-10) ;
+		$('#variable_height').css('height',$( window ).height()-200) ;
 		 
 	});	
 	
@@ -246,8 +251,8 @@ function LoadArticle(name){
 		     $('#SIMAGallery').css('background-image','url(../../home/main/discussions/' + article.pic + ')')
 		}
 		
-		$('#variable_height').css('width',$( document ).width()-10) ;
-		$('#variable_height').css('height',$( document ).height()-260) ;
+		//$('#variable_height').css('width',$( window ).width()-10) ;
+		$('#variable_height').css('height',$( window ).height()-260) ;
 	});
 }
 
@@ -262,8 +267,8 @@ function LoadGallery(name){
 			console.log(galleries)
 			SIMASliderInit();
 		});
-		//$('#variable_height').css('width',$( document ).width()-10) ;
-		$('#variable_height').css('height',$( document ).height()-260) ;
+		//$('#variable_height').css('width',$( window ).width()-10) ;
+		//$('#variable_height').css('height',$( window ).height()-260) ;
 	
 }
 

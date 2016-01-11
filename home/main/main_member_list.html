@@ -24,7 +24,7 @@
 		<div id="content" style="" >		
 
 			
-			<div id="spacer" style="height:140px"></div>
+			<div id="spacer_top" style="height:140px"></div>
 			
 			<div id="section_header" style="padding-left:20px ;">	
 				
@@ -83,9 +83,7 @@
 			<div id="spacer" style="height:20px"></div>	
 			
 			</div>
-			
-			
-			
+						
 		</div>
   </div>
  
@@ -112,7 +110,7 @@ $('#Company').bind('keydown', function(event) {
   var MemberData = [];
   MemberData.cloned = false;
   $(document).ready(function() {
-		$('#variable_height').css('width',$( document ).width()-10) ;
+		$('#variable_height').css('width',0.5*(760+$(window).width())) ;
   });
   LoadMembers("2015");
 </script> 
