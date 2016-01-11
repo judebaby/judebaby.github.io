@@ -351,7 +351,7 @@ function LoadMembers(year){
 	MemberData.list=data.list;
 	var t = $('#section_tabs').empty();
 	for(var i=MemberData.list.length-1;i>=0;i--){
-		t.append('<div id="section_tab" onclick="UpdateMemberData('+ MemberData.list[i] + ')">' + MemberData.list[i] +'</div>');
+		t.append('<div id="section_tab" onclick=\'UpdateMemberData("'+ MemberData.list[i] + '")\'>' + MemberData.list[i] +'</div>');
 	}
 	
     UpdateMemberData(MemberData.list[0]);
