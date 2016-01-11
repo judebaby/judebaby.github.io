@@ -126,6 +126,7 @@ function SIMASliderInit(){
 		SIMASliderSelectRoll(SwitchGallery(1));
 	});	
 	
+	clearInterval(slider_timer);
 	slider_timer  = setInterval('slide("left")', 5000);
 
 }

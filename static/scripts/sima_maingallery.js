@@ -132,6 +132,7 @@ function MainGalleryClicksSetup(){
 			console.log('Click');
 			var id = $(this).attr('gallery');
 			console.log(id);
+			
 			if(MainGallery.flipped==true){
 				//See if this belongs to the window that was flipped
 				var wid,iid;
@@ -146,6 +147,7 @@ function MainGalleryClicksSetup(){
 				}				
 			}
 			console.log( MainGallery.galleries[id].name)
+			LoadGallery(MainGallery.galleries[id].name);
 			vis = $("#GalleryView").css('visibility');
 			if(vis=='hidden'){
 			  $("#GalleryView").css({'top':$(window).scrollTop()});

@@ -244,7 +244,7 @@ overflow-y:auto;
 overflow-x:hidden;
 }
 .SIMAGallery1{
-position:relative;float:left;width:600px;height:336px;overflow: hidden;box-shadow: 5px 0px 2px #111; background-size:contain;
+position:relative;float:left;width:600px;height:336px;overflow: hidden;box-shadow: 5px 0px 2px #111; background-size:cover;
 }
 .SIMAGallery2{
 font-family:TitleFont;

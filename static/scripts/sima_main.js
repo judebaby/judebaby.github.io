@@ -128,6 +128,13 @@ function LoadArticleList(type){
 		t.append('<div id="spacer" style="height:220px"></div>');
 		$('#variable_height').css('width',$( document ).width()-10) ;
 		$('#variable_height').css('height',$( document ).height()-200) ;
+		
+		//Navigate to section
+		 var section = window.sessionStorage.getItem('SectionToLoad');
+		 if( typeof(section) != "undefined"){
+			if(section != -1) TabClicked(section);
+		 }
+ 
 	});	
 	
 	if(chkMobile()==true) alert('Mobile');
@@ -188,6 +195,18 @@ function LoadDiscussionsList(type){
 		t.append('<div id="spacer" style="height:220px"></div>');
 		$('#variable_height').css('width',$( document ).width()-10) ;
 		$('#variable_height').css('height',$( document ).height()-200) ;
+		
+		/*
+		//Navigate to section
+		 var section = window.sessionStorage.getItem('SectionToLoad');
+		 if( typeof(section) != "undefined"){
+			if(section != -1) {
+				window.sessionStorage.getItem('SectionToLoad',-1);
+				TabClicked(section);				
+				}
+		 }
+		 */
+		 
 	});	
 	
 	if(chkMobile()==true) alert('Mobile');
@@ -379,11 +398,7 @@ $("#variable_height").scroll(function() {
 //console.log($('#content').height())
 $('#content').append(get_footer_string());
 
-//Navigate to section
- var section = window.sessionStorage.getItem('SectionToLoad');
- if( typeof(section) != "undefined"){
-	if(section != -1) TabClicked(section);
- }
+
  
 }
 
@@ -397,7 +412,7 @@ function get_footer_string(){
 			var s = '';
 			s = s + '<div id="footer" style="margin-top:30px;border-top: 1px solid #000000;">				';
 			s = s + '	<div style="height:30px"></div>';
-			s = s + '	<div class="footer_box">';
+			s = s + '	<div class="footer_box" style="width:160px">';
 			s = s + '		<div class="footer_main" style="" onclick="footer_nav(\'main_about\',-1)"> ABOUT US </div>';
 			s = s + '		<div class="footer_main" style="" onclick="footer_nav(\'main_gallery\',-1)"> ARCHIVES </div>';
 			s = s + '		<div class="footer_main" style="" onclick="footer_nav(\'main_member_list\',-1)"> MEMBERS </div>';
@@ -410,9 +425,9 @@ function get_footer_string(){
 			s = s + '		<div class="footer_sub" style="" onclick="footer_nav(\'main_article_list\',3)"> GET-TOGETHERS </div>';
 			s = s + '		<div class="footer_sub" style="" onclick="footer_nav(\'main_article_list\',4)"> INITIATIVES </div>';
 			s = s + '	</div>';
-			s = s + '	<div class="footer_box">';
-			s = s + '		<div class="footer_main" style="" onclick="footer_nav(\'main_discussions_list\',0)"> ACTIVITIES </div>';
-			s = s + '		<div class="footer_sub" style="" onclick="footer_nav(\'main_discussions_list\',0)"> RESEARCH HIGHLITES </div>';
+			s = s + '	<div class="footer_box" style="width:200px">';
+			s = s + '		<div class="footer_main" style="" onclick="footer_nav(\'main_discussions_list\',0)"> ARTICLES </div>';
+			s = s + '		<div class="footer_sub" style="" onclick="footer_nav(\'main_discussions_list\',0)"> RESEARCH HIGHLIGHTS </div>';
 			s = s + '		<div class="footer_sub" style="" onclick="footer_nav(\'main_discussions_list\',1)"> OPEN PAGES </div>';
 			s = s + '		<div class="footer_sub" style="" onclick="footer_nav(\'main_discussions_list\',2)"> INTERVIEWS </div>';
 			s = s + '	</div>';

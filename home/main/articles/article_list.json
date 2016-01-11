@@ -21,28 +21,68 @@
 								  {
 									"article_title": "SPL",
 									"article_image": "SPL_icon.jpg",
-									"article_abstract": "<b>THE</b> Football tournament"
-								  }								  
+									"article_abstract": "Less than a fortnight into 2016 &amp; already a sense of anticipation can be felt in the cool air of Bangalore as IISc decks up to host the 3rd edition of SIMA Premier League."
+								  },	
+								  {
+									"article_title": "SBL",
+									"article_image": "SBL_icon.jpg",
+									"article_abstract": "Why should boys have all the fun??? The female counterparts of SIMA get a chance to show their zeal and sportive skills at the SIMA Badminton League. The motto of this event is to enjoy all the serves and smashes irrespective of the results of the game."
+								  }
 							 ]
 		},
 		{		
 			"article_type" : "CELEBRATIONS",
-			"article_list" : [	
+			"article_list" : [		
+								{
+									"article_title": "Ifthar",
+									"article_image": "Ifthar_icon.jpg",
+									"article_abstract": "Ramadan is observed as the holy month in Islamic calendar and Muslims worldwide fast from dawn to dusk for all 30 days of Ramadan. To foster the brotherhood and to celebrate Eid al-Fitr, SIMA organizes an Ifthar meet where all members of SIMA join together for Ifthar, the literal breakfast."
+								},
 								{
 									"article_title": "Onam",
 									"article_image": "Onam_icon.jpg",
-									"article_abstract": "Home is where the heart is and eventually that is what the heart actually yearns for. Having to lead a life away from the confines of our home is a difficult choice that we all have to make at some point in our lives."
-								}			
+									"article_abstract": "Onam is a nostalgic time for every non-resident Malayali. As always, this year too SIMA had made sure to keep the spirit of Onam alive in IISc. It once again made us realize the strength and the warmth that we shared as a community."
+								},
+								{
+									"article_title": "Christmas and New Year",
+									"article_image": "Christmas and New Year_icon.jpg",
+									"article_abstract": "Christmas celebrations commence with the hanging of a star, followed by putting up a crib and a Christmas tree, adding colours to the IISc premises. The celebration of sharing and caring is never complete with melodious carols, delicious cakes and sharing gifts."
+								}								
 							 ]
 		},
 		{		
 			"article_type" : "GET-TOGETHERS",
-			"article_list" : [					
+			"article_list" : [	
+								{
+									"article_title": "Freshers Welcome",
+									"article_image": "Freshers Welcome_icon.jpg",
+									"article_abstract": "Home away from home is what SIMA is!! The new batch comes to IISc with full zeal and a bit of confusion and anxiety. To help reduce their concerns and make them feel homely, SIMA starts off with the Freshers Party, a mere beginning of the warmth that it offers during ones stay in IISc."
+								},
+								{
+									"article_title": "SIMA Tour",
+									"article_image": "SIMA Tour_icon.jpg",
+									"article_abstract": "Life at IISc demands ample time and dedication and hence a day away from these busy schedules refreshes the mind and refills the energy within. SIMA organizes a one-day tour, to enjoy the crafts of nature, to mesmerize in our heritage values and to make some good memories."
+								},
+								{
+									"article_title": "Farewell",
+									"article_image": "Farewell_icon.jpg",
+									"article_abstract": "With every new batch joining in IISc, there is also a batch moving out. As the saying of Dr. Seuss goes dont cry because its over; smile because it happened, SIMA organizes a Farewell Party for the members passing out with cheerful spirits."
+								}								
 							 ]
 		},
 		{		
 			"article_type" : "INITIATIVES",
-			"article_list" : [						
+			"article_list" : [	
+								{
+									"article_title": "Charity",
+									"article_image": "Charity_icon.jpg",
+									"article_abstract": "SIMA, an organization that celebrates togetherness, believes in the joy of sharing with needy. With this motto, every year SIMA locates someone in need of monetary help, raises a fund with all small but significant contributions and makes it a point to deliver it direct to their hands."
+								},	
+								{
+									"article_title": "44 by 7 C",
+									"article_image": "447c_icon.jpg",
+									"article_abstract": "Being the representative of a major community in the IISc campus, SIMA is obliged to discuss and criticize socio economic cultural developments happening around ourselves. Taking soul from this philosophy, around mid 2015 SIMA started 44/7C.&nbsp;"
+								}								
 							 ]
 		}
 	]
