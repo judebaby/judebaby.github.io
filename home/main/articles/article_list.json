@@ -2,7 +2,12 @@
     "articles" : [		
 		{		
 			"article_type" : "CULTURAL",
-			"article_list" : [														
+			"article_list" : [	
+								{
+									"article_title": "MUDRA",
+									"article_image": "MUDRA_icon.jpg",
+									"article_abstract": "MUDRA is the annual cultural fest of SIMA, going by the motto of celebration of good old days and sweet memories.It provides a forum for its members to show case their talent and creativity and awaken the child in each and every one of us."
+								}		
 							 ]
 		},
 		{		
@@ -12,7 +17,12 @@
 									"article_title": "SCL",
 									"article_image": "SCL_icon.jpg",
 									"article_abstract": "SIMA Cricket League (SCL) is into its 3rd edition &amp; with each passing year as has been the norm with all other activities of SIMA, it has got BIGGER &amp; BETTER. SCL was the first main sports event that SIMA had organized which paved the way for a host of other events in due course of time."
-								  }			
+								  },
+								  {
+									"article_title": "SPL",
+									"article_image": "SPL_icon.jpg",
+									"article_abstract": "<b>THE</b> Football tournament"
+								  }								  
 							 ]
 		},
 		{		

@@ -89,7 +89,7 @@
 			CarouselConfig.tween[i] = 1/(1+Math.exp(-x));
 			
 		}
-		console.log(CarouselConfig.tween)
+		//console.log(CarouselConfig.tween)
 		//Load Image List
 		jQuery.getJSON('../../static/pics/main/bglist.json',function(data){
 			bglist = data.background_images;
