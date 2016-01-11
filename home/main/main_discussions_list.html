@@ -113,7 +113,15 @@
 
 <script type="text/javascript">
 
-
+		
+//Navigate to section
+ var section = window.sessionStorage.getItem('SectionToLoad');
+ if( typeof(section) != "undefined"){
+	if(section != -1) {				
+		TabId=section;				
+		}
+ }
+	 
 LoadDiscussionsList('discussions');
 
 </script> 
