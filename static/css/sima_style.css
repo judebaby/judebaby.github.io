@@ -151,9 +151,11 @@ background-image:url(../../static/pics/main/simalogo.png);
 background-color:rgb(0,0,0);
 background-repeat: no-repeat;
 background-size:cover;
+
 }
 .SMGImage:hover{
-	cursor:pointer;
+ cursor:pointer;
+ background-position: 30% 20%; 
 }
 #SMGbx {
 	overflow:hidden;
@@ -268,11 +270,11 @@ padding-left:20px;padding-top:10px;width:700px;
 padding-left:20px;width:700px;height:90px;
 }
 #author_image  {
-	width:72px;height:72px;background-size:contain;
+	width:100px;height:100px;background-size:contain;
 }
-#article_author_text {padding-left:10px;font-family:TitleFont;font-size:large;line-height:25px;font-weight:bold;color:rgb(0,0,0);}
+#article_author_text {padding-left:10px;font-family:TitleFont;font-size:large;line-height:25px;font-weight:bold;color:rgb(0,0,0);text-align:justify;}
 
-#article_title  {line-height:60px;height:60px;font-family:TitleFont;font-size:xx-large;font-weight:bold;color:rgb(0,0,0);}
+#article_title  {line-height:60px;height:60px;font-family:TestFont;font-size:xx-large;font-weight:bold;color:rgb(0,0,0);}
 
 
 #section_title {
@@ -349,14 +351,14 @@ margin-right:10px;
 #discuss_abstract_text {
 padding-left:10px;padding-right:10px;font-family:TitleFont;font-size:large;line-height:25px;color:rgb(0,0,0);    text-align: justify;
 }
-.discuss_abstract_title  {padding-left:10px;padding-right:10px;font-family:TitleFont;font-size:x-large;line-height:30px;font-weight:bold;color:rgb(0,0,0);text-align: justify;}
+.discuss_abstract_title  {padding-left:10px;padding-right:10px;font-family:TestFont;font-size:x-large;line-height:30px;font-weight:bold;color:rgb(0,0,0);text-align: justify;}
 
 
 
 #article_abstract_text {
 padding-left:10px;padding-right:10px;font-family:TitleFont;font-size:large;line-height:25px;color:rgb(0,0,0);    text-align: justify;
 }
-.article_abstract_title  {height:40px;padding-left:10px;padding-right:10px;font-family:TitleFont;font-size:xx-large;line-height:40px;font-weight:bold;color:rgb(0,0,0);}
+.article_abstract_title  {height:40px;padding-left:10px;padding-right:10px;font-family:TestFont;font-size:xx-large;line-height:40px;font-weight:bold;color:rgb(0,0,0);}
 
 
 .article_section_title  {height:40px;padding-left:20px;padding-right:10px;font-family:TitleFont;font-size:xx-large;line-height:40px;font-weight:bold;color:rgb(0,0,0);}

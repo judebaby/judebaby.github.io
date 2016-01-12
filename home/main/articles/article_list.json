@@ -32,7 +32,12 @@
 		},
 		{		
 			"article_type" : "CELEBRATIONS",
-			"article_list" : [		
+			"article_list" : [	
+								{
+									"article_title": "Vishu",
+									"article_image": "Vishu_icon.jpg",
+									"article_abstract": "Vishu, the harvest festival of Kerala is observed on the first day of Malayalam Calendar. SIMA prepares a 'Vishukani', the auspicious sight with a hope that the aura of the vision will glorify the year ahead. It is the time of the year when SIMA emerges as a family, with the elders offering the 'Vishu Kaineetam'."
+								},			
 								{
 									"article_title": "Ifthar",
 									"article_image": "Ifthar_icon.jpg",
@@ -46,7 +51,7 @@
 								{
 									"article_title": "Christmas and New Year",
 									"article_image": "Christmas and New Year_icon.jpg",
-									"article_abstract": "Christmas celebrations commence with the hanging of the star, followed by setting up the crib and decorating the Christmas tree which adds colour to the IISc premises. The celebration of sharing and caring is never complete without melodious carols, delicious cakes and sharing gifts which kick off SIMA's events for the New Year."
+									"article_abstract": "X'Mas celebrations commence with the hanging of the star, followed by setting up the crib and decorating the X'mas tree which adds colour to the IISc premises. The celebration of sharing and caring is never complete without melodious carols, delicious cakes and sharing gifts which kick off SIMA's events for the New Year."
 								}								
 							 ]
 		},

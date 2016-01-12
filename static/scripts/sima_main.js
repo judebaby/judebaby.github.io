@@ -83,6 +83,10 @@ function GoToPage(type,title){
 		window.sessionStorage.setItem("ArticleToLoad",type + '/'+title);
 		window.location.href = "./main_discussions.html";
 	}
+	if(type=='discussions_list'){
+		window.sessionStorage.setItem('SectionToLoad',title);
+		window.location.href = "./main_discussions_list.html";
+	}
 }
 
 function LoadArticleList(type){
@@ -248,7 +252,9 @@ function LoadArticle(name){
 				SIMASliderInit();
 			});
 		}else{		
-		     $('#SIMAGallery').css('background-image','url(../../home/main/discussions/' + article.pic + ')')
+			var url='url(../../home/main/discussions/' + article.pic + ')';
+			url = encodeURIComponent(url.trim())
+		     $('#SIMAGallery').css('background-image',url)
 		}
 		
 		//$('#variable_height').css('width',$( window ).width()-10) ;
@@ -418,6 +424,7 @@ function get_footer_string(){
 			s = s + '<div id="footer" style="margin-top:30px;border-top: 1px solid #000000;">				';
 			s = s + '	<div style="height:30px"></div>';
 			s = s + '	<div class="footer_box" style="width:160px">';
+			s = s + '		<div class="footer_main" style="" onclick="footer_nav(\'main\',-1)"> HOME </div>';
 			s = s + '		<div class="footer_main" style="" onclick="footer_nav(\'main_about\',-1)"> ABOUT US </div>';
 			s = s + '		<div class="footer_main" style="" onclick="footer_nav(\'main_gallery\',-1)"> ARCHIVES </div>';
 			s = s + '		<div class="footer_main" style="" onclick="footer_nav(\'main_member_list\',-1)"> MEMBERS </div>';
@@ -432,7 +439,7 @@ function get_footer_string(){
 			s = s + '	</div>';
 			s = s + '	<div class="footer_box" style="width:200px">';
 			s = s + '		<div class="footer_main" style="" onclick="footer_nav(\'main_discussions_list\',0)"> ARTICLES </div>';
-			s = s + '		<div class="footer_sub" style="" onclick="footer_nav(\'main_discussions_list\',0)"> RESEARCH HIGHLIGHTS </div>';
+			s = s + '		<div class="footer_sub" style="" onclick="footer_nav(\'main_discussions_list\',0)"> BMW@IISc </div>';
 			s = s + '		<div class="footer_sub" style="" onclick="footer_nav(\'main_discussions_list\',1)"> OPEN PAGES </div>';
 			s = s + '		<div class="footer_sub" style="" onclick="footer_nav(\'main_discussions_list\',2)"> INTERVIEWS </div>';
 			s = s + '	</div>';

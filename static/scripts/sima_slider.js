@@ -135,14 +135,20 @@ function SIMASliderInit(){
 function SIMASliderRun(dir){
 
 		SIMASlider.current_image = SIMASlider.current_image + dir;
+		
+		
 		SIMASlider.current_image = SIMASlider.current_image == SIMASlider.images.length ? 0 : SIMASlider.current_image;
 		SIMASlider.current_image = SIMASlider.current_image == -1 ? SIMASlider.images.length-1 : SIMASlider.current_image;		
-
 		
-		SIMASlider.img.fadeTo('slow', 0.3, function()
-		{
-			$(this).css('background-image', "url(" + '../../static/pics/galleries/' + article.galleries + galleries[SIMASlider.current_gallery].dir + SIMASlider.images[SIMASlider.current_image] + ")");
-		}).fadeTo('slow', 1);
+		if(SIMASlider.current_image==0){//Image reset to zero : roll !
+			console.log("Switching Gallery !");
+			SIMASliderSelectRoll(SwitchGallery(-1));
+		}else{		
+			SIMASlider.img.fadeTo('slow', 0.3, function()
+			{
+				$(this).css('background-image', "url(" + '../../static/pics/galleries/' + article.galleries + galleries[SIMASlider.current_gallery].dir + SIMASlider.images[SIMASlider.current_image] + ")");
+			}).fadeTo('slow', 1);
+		}
 		
 }
 

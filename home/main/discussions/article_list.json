@@ -1,7 +1,7 @@
 {
     "articles" : [		
 		{		
-			"article_type" : ["RESEARCH HIGHLIGHTS","<b> Research Highlights </b> showcase the cutting edge research done at IISc, Bangalore. Contents from Engineering and Science Streams are featured. Dig in to find more."],
+			"article_type" : ["BMW@IISc","<b> aBout</h2> My Work @ IISc </b> showcase the cutting edge research done at IISc, Bangalore. Contents from Engineering and Science Streams are featured. Dig in to find more."],
 			"article_list" : [
 								{
 									"article_title": "Nano SWAT Teams suppress threat of cancer cells",
@@ -14,19 +14,19 @@
 									"article_abstract": "Aluminium alloys are still dominant as the most widely used materials in critical structural applications such as aerospace, marine and automotive industries due to their high strength to weight ratio."
 								},
 								{
-									"article_title": "Role of RAG's in battle for survival",
-									"article_image": "Role of RAG's in battle for survival_icon.jpg",
+									"article_title": "Role of RAGs in battle for survival",
+									"article_image": "Role of RAGs in battle for survival_icon.jpg",
 									"article_abstract": "How Recombination Activating Genes help in structure-specific nuclease action and Why new HIV drugs may lead to cancer"
 								}								
 							 ]
 		},
 		{		
-			"article_type" : ["OPEN PAGES","<b> OPEN PAGES</b> serve as a platform to voice your views. Coming Soon "],
+			"article_type" : ["OPEN PAGES","<b> OPEN PAGES</b> serve as a platform to share your thoughts. It could be your concerns on a social problem, a literature writing or even a cartoon. Anything you would like to speak up."],
 			"article_list" : [								
 							 ]
 		},
 		{		
-			"article_type" : ["INTERVIEWS","<b> INTERVIEWS </b> with eminent people. Coming Soon !"],
+			"article_type" : ["INTERVIEWS","<b> INTERVIEWS </b> with eminent people within SIMA Family. Let us look back to the history of SIMA by talking to the early members. We are sure to find many interesting things !"],
 			"article_list" : [							
 							 ]
 		}

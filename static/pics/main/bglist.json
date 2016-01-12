@@ -1,50 +1,50 @@
 {
     "background_images" : [
 		{
-			"image"   : "bg1.jpg",
+			"image"   : "cl2.jpg",
 			"gallery" : "cultural"
 		},
 		{
-			"image"   : "bg2.jpg",
+			"image"   : "s1.jpg",
 			"gallery" : "sports"
 		},
 		{
-			"image"   : "bg3.jpg",
+			"image"   : "s3.jpg",
 			"gallery" : "event"
 		},
 		{
-			"image"   : "bg4.jpg",
+			"image"   : "c3.jpg",
 			"gallery" : "cultural"
 		},
 		{
-			"image"   : "bg5.jpg",
+			"image"   : "s2.jpg",
 			"gallery" : "sports"
 		},
 		{
-			"image"   : "bg6.jpg",
+			"image"   : "g2.jpg",
 			"gallery" : "event"
 		},
 		{
-			"image"   : "bg7.jpg",
+			"image"   : "cl1.jpg",
 			"gallery" : "charity"
 		},
 		{
-			"image"   : "bg8.jpg",
+			"image"   : "s3.jpg",
 			"gallery" : "cultural"
 		},
 		{
-			"image"   : "bg9.jpg",
+			"image"   : "cl3.jpg",
 			"gallery" : "sports"
 		},
 		{
-			"image"   : "bg10.jpg",
+			"image"   : "c1.jpg",
 			"gallery" : "event"
 		},
 		{
-			"image"   : "bg11.jpg",
+			"image"   : "c2.jpg",
 			"gallery" : "charity"
 		},{
-			"image"   : "bg12.jpg",
+			"image"   : "s4.jpg",
 			"gallery" : "cultural"
 		}		
 	]
